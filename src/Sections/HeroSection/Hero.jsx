@@ -4,6 +4,8 @@ import Button from '../../Components/button.jsx';
 import fitLogo from '../../assets/logos/FIT.jpg';
 import nitiLogo from '../../assets/logos/NITI.png';
 import Navbar from '../../Layout/Navbar.jsx';
+import { useNavigate } from 'react-router-dom';
+
 function Hero () {
   return (
     <section className={styles.hero} style={{ backgroundImage: `url(${stadiumImg})` }}>
@@ -40,10 +42,10 @@ function Hero () {
             </div>
           </div>
           <div className={styles.buttons}>
-            <Button className={styles.primary} text="Join the movement" />
+            <Button className={styles.primary} text="Join the movement" onClick={() => {}} />
             <div className={styles.secWrapper}>
               <div className={styles.out}></div>
-              <button className={styles.secondary}>Explore Events</button>
+              <button className={styles.secondary} onClick={() => {}}>Explore Events</button>
             </div>
           </div>
         </div>

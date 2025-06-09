@@ -11,7 +11,7 @@ import OrganizerIcon from "../../assets/Movement/JoinFormIcon/Organizer.png";
 import ContentIcon from "../../assets/Movement/JoinFormIcon/Content.png";
 import SupporterIcon from "../../assets/Movement/JoinFormIcon/Supporter.png";
 
-import "./Join.module.css";
+import "./Join.css";
 
 const JOIN_AS_OPTIONS = [
   { id: "player",    label: "Player",          icon: PlayerIcon },
@@ -45,7 +45,7 @@ export default function Join() {
     setForm((f) => ({ ...f, joinAs: j }));
 
   const handleGenerateOTP = () => {
-
+    // TODO: call your OTP API
     console.log("Generate OTP for", mobileNumber);
   };
 
@@ -54,6 +54,7 @@ export default function Join() {
     setLoading(true);
     setError("");
     try {
+      // TODO: submit `form`
       console.log("Submitting details", form);
       setSuccess(true);
     } catch {
