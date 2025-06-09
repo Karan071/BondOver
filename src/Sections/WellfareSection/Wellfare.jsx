@@ -5,7 +5,7 @@ import Button from '../../Components/button.jsx';
 
 const HswfSection = () => {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id='network'>
       <h3 className={styles.h3}>Brought to You by</h3>
       <h2  className={styles.h2}>Hardcore Sports Welfare Foundation</h2>
 

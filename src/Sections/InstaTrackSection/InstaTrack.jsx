@@ -23,7 +23,7 @@ const InstaFastTrack = () => {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id='insta'>
       <div className={styles.top}>
         <div>
           <h2 className={styles.h2}>BOS Insta Fast Track</h2>

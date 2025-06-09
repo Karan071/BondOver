@@ -1,6 +1,3 @@
-/* Navbar.module.css */
-
-/* Base styles */
 .logoNav {
   display: flex;
   justify-content: space-between;
@@ -41,8 +38,6 @@
   z-index: 1;
   overflow: hidden;
 }
-
-
 
 .joinBtn:hover::before {
   opacity: 1;
@@ -88,7 +83,6 @@
     align-items: center;
   }
 
-  /* Merged .nav block for mobile; only one definition */
   .nav {
     position: fixed;
     top: 0;
@@ -104,10 +98,10 @@
     gap: 20px;
     transition: left 0.3s ease;
     z-index: 1000;
-    overflow-y: auto;              /* allow vertical scrolling */
+    overflow-y: auto;
     overflow-x: hidden;
-    max-height: 100vh;             /* safeguard for Safari */
-    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    max-height: 100vh;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav.mobileOpen {
@@ -125,6 +119,9 @@
     text-transform: uppercase;
     font-weight: 400;
     text-align: left;
+    /* Add transition with delay */
+    transition: color 0.3s ease 0.1s,
+                transform 0.3s ease 0.1s;
   }
 
   .joinBtn {
@@ -183,6 +180,7 @@
 /* Fluid typography and spacing */
 .nav a {
   font-size: clamp(10px, 1vw, 16px);
+
 }
 
 .joinBtn {

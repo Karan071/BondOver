@@ -1,9 +1,24 @@
+<<<<<<< HEAD
 import React, { useState } from "react";              // ← add useState
 import Navbar from "../../Layout/Navbar";
 import WhatYouGet from "../../Components/WhatYouGet";
 import GradientButton from "../../Components/GradientButton";
 import Footer from "../../Layout/footer/Footer"
 import "./Register.css";
+=======
+import Navbar from "../../Layout/Navbar"
+import styles from "./Register.module.css";
+export default function Register() {
+    return (
+        <div>
+            <div className={styles.navWrapper}>
+                <Navbar />
+            </div>
+            Register
+        </div>
+    )
+}
+>>>>>>> 503f43b9fb3126d0ec6d97dcbbf81a6447d7e867
 
 export default function Register() {
  
