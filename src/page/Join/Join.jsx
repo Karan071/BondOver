@@ -156,28 +156,38 @@ function JoinForm({
       <h1 className="sponsor-title text-left">Fill in your details</h1>
       <form onSubmit={handleSubmit}>
         <div className="divideSection">
-          <RenderInput
-            label="Full name"
-            placeholder="Enter your name"
-            value={form.name}
-            onChange={handleChange("name")} section
-          />
-          <div className="section">
-            <span className="sts-heading">Gender *</span>
-            <div className="genderOptions">
-              {["male", "female", "other"].map((g) => (
-                <button
-                  key={g}
-                  type="button"
-                  className={`sts-btn ${form.gender === g ? "sts-btn--selected" : ""}`}
-                  onClick={setGender(g)}
-                >
-                  <img src={`/icons/${g}.svg`} alt={g} className="sts-btn__icon-img" />
-                  <span className="sts-btn__label">
-                    {g[0].toUpperCase() + g.slice(1)}
-                  </span>
-                </button>
-              ))}
+          <div className="halfSection">
+            <RenderInput
+              label="Full name"
+              placeholder="Enter your name"
+              value={form.name}
+              onChange={handleChange("name")}
+            />
+          </div>
+          <div className="halfSection">
+            <div className="halfSection genderFlexRow">
+              <div>
+                <span className="genderLabel">
+                  Gender <span className="redStar">*</span>
+                </span>
+              </div>
+              <div>
+                <div className="genderOptions">
+                  {["male", "female", "other"].map((g) => (
+                    <button
+                      key={g}
+                      type="button"
+                      className={`sts-btn ${form.gender === g ? "sts-btn--selected" : ""}`}
+                      onClick={setGender(g)}
+                    >
+                      <img src={`/icons/${g}.svg`} alt={g} className="sts-btn__icon-img" />
+                      <span className="sts-btn__label">
+                        {g[0].toUpperCase() + g.slice(1)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -197,7 +207,7 @@ function JoinForm({
             onChange={handleChange("locality")}
             className="fullWidth"
           />
-          
+
         </div>
 
         <div className="section">
