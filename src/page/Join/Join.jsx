@@ -45,7 +45,7 @@ export default function Join() {
     setForm((f) => ({ ...f, joinAs: j }));
 
   const handleGenerateOTP = () => {
-    // TODO: call your OTP API
+
     console.log("Generate OTP for", mobileNumber);
   };
 
@@ -54,7 +54,6 @@ export default function Join() {
     setLoading(true);
     setError("");
     try {
-      // TODO: submit `form`
       console.log("Submitting details", form);
       setSuccess(true);
     } catch {
