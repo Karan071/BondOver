@@ -66,7 +66,9 @@ export default function Join() {
 
   return (
     <>
-      <Navbar />
+      <div className="navWrapper">
+        <Navbar />
+      </div>
 
       <section className="heroSection">
         <div className="container">
@@ -121,33 +123,81 @@ export default function Join() {
         </div>
       </section>
 
-      <section className="sponsor-container">
-        <h1 className="sponsor-title text-left">Fill in your details</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="section">
-            <RenderInput
-              label="Full name "
-              placeholder="Enter your name"
-              value={form.name}
-              onChange={handleChange("name")}
-            />
-            <RenderInput
-              label="DOB "
-              type="date"
-              value={form.dob}
-              onChange={handleChange("dob")}
-            />
-          </div>
+      <JoinForm
+        form={form}
+        handleChange={handleChange}
+        setGender={setGender}
+        setJoinAs={setJoinAs}
+        loading={loading}
+        success={success}
+        error={error}
+        handleSubmit={handleSubmit}
+      />
 
+      <Footer />
+    </>
+  );
+}
+
+
+function JoinForm({
+  form,
+  handleChange,
+  setGender,
+  setJoinAs,
+  loading,
+  success,
+  error,
+  handleSubmit,
+}) {
+  return (
+    <section className="sponsor-container">
+      <h1 className="sponsor-title text-left">Fill in your details</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="divideSection">
+          <RenderInput
+            label="Full name"
+            placeholder="Enter your name"
+            value={form.name}
+            onChange={handleChange("name")} section
+          />
           <div className="section">
-            <RenderInput
-              label="Locality "
-              placeholder="Enter Your Society Name (As Listed On Google Maps)"
-              value={form.locality}
-              onChange={handleChange("locality")}
-              className="fullWidth"
-            />
+            <span className="sts-heading">Gender *</span>
+            <div className="genderOptions">
+              {["male", "female", "other"].map((g) => (
+                <button
+                  key={g}
+                  type="button"
+                  className={`sts-btn ${form.gender === g ? "sts-btn--selected" : ""}`}
+                  onClick={setGender(g)}
+                >
+                  <img src={`/icons/${g}.svg`} alt={g} className="sts-btn__icon-img" />
+                  <span className="sts-btn__label">
+                    {g[0].toUpperCase() + g.slice(1)}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
+        </div>
+
+
+        <div className="divideSection">
+          <RenderInput
+            label="DOB "
+            type="date"
+            value={form.dob}
+            onChange={handleChange("dob")}
+          />
+          <RenderInput
+            label="Locality "
+            placeholder="Enter Your Society Name (As Listed On Google Maps)"
+            value={form.locality}
+            onChange={handleChange("locality")}
+            className="fullWidth"
+          />
+          
+        </div>
 
           <div className="section">
             <RenderInput
