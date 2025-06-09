@@ -1,5 +1,5 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './JoinMovement.module.css';
-
 import im1 from '../../assets/Movement/img1.png';
 import im2 from '../../assets/Movement/img5.png';
 import im3 from '../../assets/Movement/img2.png';
@@ -12,7 +12,9 @@ import im4F from '../../assets/Movement/im3F.png';
 import im5F from '../../assets/Movement/im4F.png';
 import Button from '../../Components/button.jsx';
 import WhatYouGet from "../../Components/WhatYouGet.jsx";
+
 const JoinTheMovement = () => {
+  const navigate = useNavigate();
   return (
     <section className={styles.section} id='joinas'>
       <div className={styles.header}>
@@ -29,7 +31,7 @@ const JoinTheMovement = () => {
             <p className={styles.label}>Join as a</p>
             <h3 className={styles.title}>Player</h3>
             <p className={styles.text}>Compete in events and represent your community</p>
-            <Button className={styles.button} text="Join as a Player"/>
+            <Button className={styles.button} text="Join as a Player" onClick={() => navigate("/join")}/>
           </div>
             <picture className={styles.img1}>
               <source media="(min-width: 1250px)" srcSet={im1} />
@@ -42,7 +44,7 @@ const JoinTheMovement = () => {
             <p className={styles.label}>Join as a </p>
             <h3 className={styles.title}>Content Creator</h3>
             <p className={styles.text}>Capture and share stories from the field</p>
-            <Button className={styles.button} text="Join as a Content Creator"/>
+            <Button className={styles.button} text="Join as a Content Creator" onClick={() => navigate("/join")}/>
           </div>
           <picture className={`${styles.img1} ${styles.im1}`}>
               <source media="(min-width: 1250px)" srcSet={im3} />
@@ -57,7 +59,7 @@ const JoinTheMovement = () => {
             <p className={styles.label}>Join as a</p>
             <h3 className={styles.title}>Organiser</h3>
             <p className={styles.text}>Host local events under the BOS banner</p>
-            <Button className={styles.button} text="Join as a Organiser"/>
+            <Button className={styles.button} text="Join as a Organiser" onClick={() => navigate("/join")}/>
           </div>
           <picture className={styles.im2}>
               <source media="(min-width: 1250px)" srcSet={im2} />
@@ -71,7 +73,7 @@ const JoinTheMovement = () => {
             <p className={styles.label}>Join as a </p>
             <h3 className={styles.title}>Volunteer</h3>
             <p className={styles.text}>Help us organize and execute BOS meets</p>
-            <Button className={styles.button} text="Join as a Volunteer"/>
+            <Button className={styles.button} text="Join as a Volunteer" onClick={() => navigate("/join")}/>
           </div>
           <picture className={styles.im3}>
               <source media="(min-width: 1250px)" srcSet={im4} />
@@ -84,7 +86,7 @@ const JoinTheMovement = () => {
             <p className={styles.label}>Join as a </p>
             <h3 className={styles.title}>Supporter</h3>
             <p className={styles.text}>Spread the message and help grow the movement</p>
-            <Button className={styles.button} text="Join as a Supporter"/>
+            <Button className={styles.button} text="Join as a Supporter" onClick={() => navigate("/join")}/>
           </div>
           <picture className={styles.im3}>
               <source media="(min-width: 1250px)" srcSet={im5} />
