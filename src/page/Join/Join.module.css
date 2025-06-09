@@ -1,135 +1,91 @@
-/* ─── base & helpers ───────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-.fullWidth {
-  grid-column: 1 / -1;
-}
-
-/* ─── sponsor-container ────────────────────────────────────────── */
-.sponsor-container {
-  max-width: 1136px;
+/* common inner wrapper */
+.section-inner {
+  max-width: 800px;
   margin: 0 auto;
   padding: 32px;
-  background-color: #FEFEFE;
-  border: 1px solid #FEFEFE;
-  font-family: Arial, sans-serif;
-  color: #333333;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 48px;
 }
 
-.sponsor-title {
-  font-size: 32px;
+.section-title {
+  font-size: 28px;
   font-weight: 700;
-  margin: 0 0 24px;
-}
-
-/* ─── two-col section ─────────────────────────────────────────── */
-.section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px 32px; /* 24px rows, 32px columns */
-  margin-bottom: 32px;
-}
-
-.section-header {
-  font-size: 18px;
-  font-weight: 600;
   margin-bottom: 16px;
 }
 
-.small-note {
-  font-size: 14px;
-  color: #555555;
-  margin-bottom: 8px;
+/* OTP section */
+.otp-section .mobile-input__wrapper {
+  margin: 16px 0;
 }
 
-/* ─── mobile margin utility ───────────────────────────────────── */
-.mobileMargin {
-  margin-top: 24px;
-}
-
-/* ─── input / select wrappers ─────────────────────────────────── */
-.mobile-input__wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 1072px;
-  margin: 0 auto;
-}
-
-/* ─── sts (sponsorship-type) blocks ───────────────────────────── */
-.sts-wrapper {
+.otp-section .mobile-input__group {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-.sts-heading {
-  font-size: 18px;
-  font-weight: 400;
-  margin: 0;
-}
-
-.sts-description {
-  font-size: 14px;
-  color: #4b5563;
-  margin: 0;
-}
-
-.sts-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.sts-btn {
+.otp-section .mobile-input__country {
+  background: #f9f9f9;
+  padding: 0 12px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  background: #fff;
+}
+
+.otp-section input {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  font-size: 16px;
+}
+
+.otp-section button {
+  margin-top: 16px;
+}
+
+/* Details section */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  margin-bottom: 24px;
+}
+
+.gender-row,
+.join-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.gender-btn,
+.join-btn {
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  border-radius: 6px;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
 }
 
-.sts-btn:hover {
-  border-color: #9ca3af;
+.gender-btn.active,
+.join-btn.active {
+  border-color: #e60023;
+  background: #fff;
 }
 
-.sts-btn--selected {
-  border-color: #000;
-  background: #f9fafb;
+.note {
+  padding: 12px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  font-size: 14px;
 }
 
-.sts-btn__icon,
-.sts-btn__icon-img {
-  width: 16px;
-  height: 16px;
-}
-
-.sts-input-group {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-/* ─── button & submit-row ────────────────────────────────────── */
-.wrapBtn {
-  width: 100%;
-  text-align: left;
-  margin-bottom: 32px;
-}
-
-.gbtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+.submit-btn {
   width: 290px;
   height: 68px;
   padding: 16px 48px;
@@ -139,37 +95,18 @@
   border-radius: 10px;
   background: #fff;
   background-image:
-    linear-gradient(#fff, #fff),
+    linear-gradient(#fff,#fff),
     linear-gradient(
       90deg,
-      #df0024 0%,
-      #fc9f0b 20%,
-      #ffcd00 40%,
-      #3bb402 60%,
-      #0085c7 80%,
-      #4f449d 100%
+      #e60023 0%,#ff9f00 20%,#ffee00 40%,#00b140 60%,#0072bb 80%,#4f449d 100%
     );
-  background-origin: border-box;
   background-clip: padding-box, border-box;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  margin-bottom: 24px;
 }
 
-.gbtn:hover:not(:disabled) {
-  opacity: 0.85;
-}
-
-.SubmitBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* ─── responsive tweaks ───────────────────────────────────────── */
-@media (max-width: 764px) {
-  .section {
-    grid-template-columns: 1fr;
-  }
-  .gbtn {
-    width: 100%;
-  }
+.footer-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
 }
