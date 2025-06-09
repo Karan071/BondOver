@@ -1,0 +1,175 @@
+/* ─── base & helpers ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* ─── sponsor-container ────────────────────────────────────────── */
+.sponsor-container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #FEFEFE;
+  border: 1px solid #FEFEFE;
+  font-family: Arial, sans-serif;
+  color: #333333;
+}
+
+.sponsor-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+/* ─── two-col section ─────────────────────────────────────────── */
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 32px; /* 24px rows, 32px columns */
+  margin-bottom: 32px;
+}
+
+.section-header {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.small-note {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 8px;
+}
+
+/* ─── mobile margin utility ───────────────────────────────────── */
+.mobileMargin {
+  margin-top: 24px;
+}
+
+/* ─── input / select wrappers ─────────────────────────────────── */
+.mobile-input__wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1072px;
+  margin: 0 auto;
+}
+
+/* ─── sts (sponsorship-type) blocks ───────────────────────────── */
+.sts-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.sts-heading {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.sts-description {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0;
+}
+
+.sts-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sts-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.sts-btn:hover {
+  border-color: #9ca3af;
+}
+
+.sts-btn--selected {
+  border-color: #000;
+  background: #f9fafb;
+}
+
+.sts-btn__icon,
+.sts-btn__icon-img {
+  width: 16px;
+  height: 16px;
+}
+
+.sts-input-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ─── button & submit-row ────────────────────────────────────── */
+.wrapBtn {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.gbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 290px;
+  height: 68px;
+  padding: 16px 48px;
+  font-size: 20px;
+  font-weight: 500;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #fff;
+  background-image:
+    linear-gradient(#fff, #fff),
+    linear-gradient(
+      90deg,
+      #df0024 0%,
+      #fc9f0b 20%,
+      #ffcd00 40%,
+      #3bb402 60%,
+      #0085c7 80%,
+      #4f449d 100%
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.gbtn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.SubmitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── responsive tweaks ───────────────────────────────────────── */
+@media (max-width: 764px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+  .gbtn {
+    width: 100%;
+  }
+}

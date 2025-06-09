@@ -20,7 +20,7 @@
 
     .Iconcard {
       background-color: white;
-      padding: 76px 32px 44px;
+      padding: 64px 32px 32px 32px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       flex: 1 1 calc(25% - 20px);
@@ -68,7 +68,7 @@
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1440px) {
   .Iconcard{
     flex: 1 1 calc(50% - 20px);
   }

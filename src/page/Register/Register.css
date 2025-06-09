@@ -1,0 +1,248 @@
+.heroSection {
+  background: #f8f8f8;     
+  padding: 64px 193px;      /* 64px top/bottom, 193px left/right */
+}
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  text-align: center;
+}
+.navWrapper{
+  padding: 16px 193px;  
+  color: #000000;
+}
+.heroTitle {
+  font-size: 64px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;                
+  margin-bottom: 16px;     
+}
+.heroSubtitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0;               
+  margin-bottom: 24px;      
+}
+.heroText {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #4B4B4B;
+  margin: 0 auto;           
+  max-width: 1138px;        
+}
+
+
+
+@media (max-width: 1360px) {
+  .heroSection {
+    padding: 48px 120px;    
+  }
+  .navWrapper{
+    padding: 16px 120px;
+  }
+  .heroTitle {
+    font-size: 48px;      
+    margin-bottom: 12px;
+  }
+  .heroSubtitle {
+    font-size: 20px;       
+    margin-bottom: 20px;
+  }
+  .heroText {
+    font-size: 16px;       
+    max-width: 700px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .heroSection {
+    padding: 40px 80px;     
+  }
+  .navWrapper{
+    padding: 16px 80px;  
+  }
+  .heroTitle {
+    font-size: 40px;      
+    margin-bottom: 10px;
+  }
+  .heroSubtitle {
+    font-size: 18px;        
+    margin-bottom: 16px;
+  }
+  .heroText {
+    font-size: 15px;       
+    max-width: 600px;
+    line-height: 1.5;
+  }
+}
+@media (max-width: 860px)
+{
+  .navWrapper{
+    padding: 16px 40px;  
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 32px 16px;     /* minimal side padding */
+  }
+  .navWrapper{
+    padding: 8px 16px;
+  }
+  .heroTitle {
+    font-size: 32px;        /* tablet → mobile size */
+    margin-bottom: 8px;
+  }
+  .heroSubtitle {
+    font-size: 16px;        /* tablet → mobile size */
+    margin-bottom: 12px;
+  }
+  .heroText {
+    font-size: 14px;       
+    max-width: 100%;        
+    text-align: left;      
+    line-height: 1.4;
+  }
+}
+/* ─── Register For Event Section ─────────────────────────────────────────────── */
+.sponsor-container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #FEFEFE;
+  border: 1px solid #FEFEFE;
+  color: #000000;
+}
+
+.sponsor-title {
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section-header {
+  font-size: 20px;
+  font-weight: 400;
+   line-height:100%;
+  margin-bottom: 16px;
+}
+
+.mobile-input__wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1072px;
+  margin: 0 auto;
+}
+
+.mobile-input__label {
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  background: #fff;
+  padding: 0 4px;
+  font-size: 0.875rem;
+  color: #000;
+  z-index: 10;
+}
+
+.mobile-input__label span {
+  color: #f44336;
+}
+
+.mobile-input__group {
+  display: flex;
+}
+
+.mobile-input__country {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 68px;
+  background: #F8F8F8;
+  border: 1px solid #F8F8F8;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  color: #4D4D4D;
+}
+
+.mobile-input__field {
+  flex: 1;
+  height: 68px;
+  padding: 0 16px;
+  background: #F8F8F8;
+  border: 1px solid #F8F8F8;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  font-size: 1.125rem;
+  color: #4b5563;
+  transition: box-shadow 0.15s ease;
+}
+
+.mobile-input__field::placeholder {
+  color: #4D4D4D;
+}
+
+.mobile-input__field:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.wrapBtn {
+  width: 100%;
+  text-align: left;
+}
+
+.mobileMargin {
+  margin-top: 16px;
+}
+
+.gbtn {
+  position: relative;
+  padding: 16px, 48px, 16px,48px;
+  font-size: 28px;
+  font-weight: 500;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  background-image:
+    linear-gradient(#fff, #fff),
+    linear-gradient(
+      90deg,
+      #df0024 0%,
+      #fc9f0b 20%,
+      #ffcd00 40%,
+      #3bb402 60%,
+      #0085c7 80%,
+      #4f449d 100%
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.SubmitBtn{
+  padding: 16px 48px;
+  font-size: 28px;
+}
+.wrapBtn{
+  width: 100%;
+  text-align: left;
+}
+@media (max-width:764px) {
+  .SubmitBtn{
+  padding: 12px 32px;
+  font-size: 20px;
+}
+.mobileMargin{
+  margin-top: 16px;
+}
+}
