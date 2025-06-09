@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../../Layout/Navbar";
 import Footer from "../../Layout/footer/Footer";
 import WhatYouGet from "../../Components/WhatYouGet";
@@ -10,15 +10,16 @@ import VolunteerIcon from "../../assets/Movement/JoinFormIcon/Volunteer.png";
 import OrganizerIcon from "../../assets/Movement/JoinFormIcon/Organizer.png";
 import ContentIcon from "../../assets/Movement/JoinFormIcon/Content.png";
 import SupporterIcon from "../../assets/Movement/JoinFormIcon/Supporter.png";
+import Target from "../../assets/logos/Target.png"
 
-import "./Join.module.css";
+import "./Join.css";
 
 const JOIN_AS_OPTIONS = [
-  { id: "player",    label: "Player",          icon: PlayerIcon },
-  { id: "volunteer", label: "Volunteer",       icon: VolunteerIcon },
-  { id: "organizer", label: "Organizer",       icon: OrganizerIcon },
-  { id: "creator",   label: "Content Creator", icon: ContentIcon },
-  { id: "supporter", label: "Supporter",       icon: SupporterIcon },
+  { id: "player", label: "Player", icon: PlayerIcon },
+  { id: "volunteer", label: "Volunteer", icon: VolunteerIcon },
+  { id: "organizer", label: "Organizer", icon: OrganizerIcon },
+  { id: "creator", label: "Content Creator", icon: ContentIcon },
+  { id: "supporter", label: "Supporter", icon: SupporterIcon },
 ];
 
 export default function Join() {
@@ -33,9 +34,9 @@ export default function Join() {
     gender: "male",
     joinAs: "",
   });
-  const [loading, setLoading]   = useState(false);
-  const [success, setSuccess]   = useState(false);
-  const [error, setError]       = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -66,7 +67,9 @@ export default function Join() {
 
   return (
     <>
-      <Navbar />
+      <div className="navWrapper">
+          <Navbar />
+        </div>
 
       <section className="heroSection">
         <div className="container">
@@ -121,58 +124,54 @@ export default function Join() {
         </div>
       </section>
 
-      <section className="sponsor-container">
-        <h1 className="sponsor-title text-left">Fill in your details</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="section">
-            <RenderInput
-              label="Full name "
-              placeholder="Enter your name"
-              value={form.name}
-              onChange={handleChange("name")}
-            />
-            <RenderInput
-              label="DOB "
-              type="date"
-              value={form.dob}
-              onChange={handleChange("dob")}
-            />
-          </div>
+      <JoinForm
+        form={form}
+        handleChange={handleChange}
+        setGender={setGender}
+        setJoinAs={setJoinAs}
+        loading={loading}
+        success={success}
+        error={error}
+        handleSubmit={handleSubmit}
+      />
 
-          <div className="section">
-            <RenderInput
-              label="Locality "
-              placeholder="Enter Your Society Name (As Listed On Google Maps)"
-              value={form.locality}
-              onChange={handleChange("locality")}
-              className="fullWidth"
-            />
-          </div>
+      <Footer />
+    </>
+  );
+}
 
-          <div className="section">
-            <RenderInput
-              label="Email "
-              type="email"
-              placeholder="Enter Email"
-              value={form.email}
-              onChange={handleChange("email")}
-              className="fullWidth"
-            />
-          </div>
 
-          <div className="sts-wrapper fullWidth">
+function JoinForm({
+  form,
+  handleChange,
+  setGender,
+  setJoinAs,
+  loading,
+  success,
+  error,
+  handleSubmit,
+}) {
+  return (
+    <section className="sponsor-container">
+      <h1 className="sponsor-title text-left">Fill in your details</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="section">
+          <RenderInput
+            label="Full name "
+            placeholder="Enter your name"
+            value={form.name}
+            onChange={handleChange("name")}
+          />
+          <div className="sts-wrapper">
             <span className="sts-heading">Gender *</span>
             <div className="sts-options">
               {["male", "female", "other"].map((g) => (
                 <button
                   key={g}
                   type="button"
-                  className={`sts-btn ${
-                    form.gender === g ? "sts-btn--selected" : ""
-                  }`}
+                  className={`sts-btn ${form.gender === g ? "sts-btn--selected" : ""}`}
                   onClick={setGender(g)}
                 >
-                  {/* Assuming you have icons named male.svg etc */}
                   <img src={`/icons/${g}.svg`} alt={g} className="sts-btn__icon-img" />
                   <span className="sts-btn__label">
                     {g[0].toUpperCase() + g.slice(1)}
@@ -181,49 +180,73 @@ export default function Join() {
               ))}
             </div>
           </div>
+        </div>
+        <RenderInput
+          label="DOB "
+          type="date"
+          value={form.dob}
+          onChange={handleChange("dob")}
+        />
 
-          <div className="sts-wrapper fullWidth">
-            <span className="sts-heading">Join As *</span>
-            <div className="sts-options">
-              {JOIN_AS_OPTIONS.map(({ id, label, icon }) => (
-                <button
-                  key={id}
-                  type="button"
-                  className={`sts-btn ${
-                    form.joinAs === id ? "sts-btn--selected" : ""
-                  }`}
-                  onClick={setJoinAs(id)}
-                >
-                  <img src={icon} alt={label} className="sts-btn__icon-img" />
-                  <span className="sts-btn__label">{label}</span>
-                </button>
-              ))}
-            </div>
+        <div className="section">
+          <RenderInput
+            label="Locality "
+            placeholder="Enter Your Society Name (As Listed On Google Maps)"
+            value={form.locality}
+            onChange={handleChange("locality")}
+            className="fullWidth"
+          />
+        </div>
+
+        <div className="section">
+          <RenderInput
+            label="Email "
+            type="email"
+            placeholder="Enter Email"
+            value={form.email}
+            onChange={handleChange("email")}
+            className="fullWidth"
+          />
+        </div>
+
+
+        <div className="sts-wrapper fullWidth">
+          <span className="sts-heading">Join As *</span>
+          <div className="sts-options">
+            {JOIN_AS_OPTIONS.map(({ id, label, icon }) => (
+              <button
+                key={id}
+                type="button"
+                className={`sts-btn ${form.joinAs === id ? "sts-btn--selected" : ""}`}
+                onClick={setJoinAs(id)}
+              >
+                <img src={icon} alt={label} className="sts-btn__icon-img" />
+                <span className="sts-btn__label">{label}</span>
+              </button>
+            ))}
           </div>
+        </div>
 
-          <div className="note">
-            📧 Confirmation and event kit details will be shared via
-            email/WhatsApp
-          </div>
+        <div className="note">
+          <img src={Target} alt="target" className="logo" /> Confirmation and event kit details will be shared via
+          email/WhatsApp
+        </div>
 
-          <div className="wrapBtn">
-            <button
-              type="submit"
-              className="gbtn SubmitBtn"
-              disabled={loading}
-            >
-              {loading ? "Submitting…" : "Register Now"}
-            </button>
-          </div>
+        <div className="wrapBtn">
+          <button
+            type="submit"
+            className="gbtn SubmitBtn"
+            disabled={loading}
+          >
+            {loading ? "Submitting…" : "Register Now"}
+          </button>
+        </div>
 
-          {success && (
-            <p className="success-message">Form submitted successfully!</p>
-          )}
-          {error && <p className="error-message">{error}</p>}
-        </form>
-      </section>
-
-      <Footer />
-    </>
+        {success && (
+          <p className="success-message">Form submitted successfully!</p>
+        )}
+        {error && <p className="error-message">{error}</p>}
+      </form>
+    </section>
   );
 }
