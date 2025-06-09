@@ -1,0 +1,169 @@
+.section {
+  padding: 96px 240px;
+  text-align: center;
+  background: #F8F8F8;
+}
+
+.h2 {
+  font-size: 64px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: nowrap; /* No wrap until 1060px */
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  padding-bottom: 62px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 30%; 
+  min-width: 280px;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.user img {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 20px;
+}
+
+.location {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.text {
+  font-size: 20px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.quoteIcon {
+  width: 64px;
+}
+@media (max-width: 1360px) {
+  .section {
+    padding: 80px 120px; /* reduce horizontal padding */
+  }
+
+  .card {
+    width: 30%;
+    max-width: 300px;
+    padding: 28px 20px 56px;
+  }
+
+  .grid {
+    gap: 20px; /* tighter spacing between cards */
+  }
+
+  .h2 {
+    font-size: 56px;
+  }
+
+  .text {
+    font-size: 18px;
+  }
+
+  .quoteIcon {
+    width: 60px;
+  }
+}
+
+@media (max-width: 1060px) {
+  .section {
+    padding: 64px 48px;
+  }
+
+  .h2 {
+    font-size: 48px;
+  }
+
+  .grid {
+    flex-wrap: wrap; /* allow wrapping now */
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .card {
+    width: 45%;
+    max-width: 100%;
+    padding: 28px 24px 56px;
+  }
+
+  .text {
+    font-size: 18px;
+  }
+
+  .quoteIcon {
+    width: 56px;
+  }
+}
+
+/* ✅ Mobile adjustments */
+@media (max-width: 764px) {
+  .section {
+    padding: 48px 16px;
+  }
+
+  .h2 {
+    font-size: 32px;
+  }
+
+  .grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 24px 20px 48px;
+  }
+  .text {
+    font-size: 14px;
+  }
+
+  .quoteIcon {
+    width: 48px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .location {
+    font-size: 12px;
+  }
+
+  .user img {
+    width: 36px;
+    height: 36px;
+  }
+  
+}

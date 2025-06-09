@@ -1,0 +1,91 @@
+
+.container {
+      margin: 0 auto;
+      margin-top: 40px;
+    }
+
+.container h2 {
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .Iconcards {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    .Iconcard {
+      background-color: white;
+      padding: 76px 32px 44px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      flex: 1 1 calc(25% - 20px);
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .Iconcard img {
+      width: clamp(64px, 20vw, 128px);
+      margin-bottom: 33px;
+      position: absolute;
+      left: 0;
+      top: -30px;
+    }
+
+    
+
+    .Iconcard p {
+      font-size: 24px;
+      font-weight: 600;
+
+    }
+
+    
+.container h2 {
+  font-size: clamp(24px, 4vw, 40px);
+}
+
+.Iconcard p {
+  font-size: clamp(16px, 3vw, 24px);
+}
+
+@media (max-width: 768px){
+    .Iconcard {
+    flex: 1 1 100%;
+  }
+
+  .Iconcard img {
+    width: clamp(64px, 30vw, 96px);
+    top: -20px;
+  }
+
+  .Iconcard p {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+}
+
+@media (max-width: 1300px) {
+  .Iconcard{
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+@media (max-width: 768px){
+.Iconcard{
+    flex: 1 1 100%;
+    margin-bottom: 16px;
+    text-align: center;
+    padding: 28px 11px 16px;
+  }
+  .Iconcard img{
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .Iconcard p{
+    display: inline;
+  }
+}

@@ -1,0 +1,161 @@
+/* HswfSection.module.css */
+
+.section {
+  padding: clamp(40px, 7vw, 96px) clamp(16px, 10vw, 240px);
+  text-align: center;
+  background: #F8F8F8;
+  margin: 0 auto;
+}
+
+.h2 {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 800;
+  margin-bottom: clamp(16px, 3vw, 32px);
+}
+
+.h3 {
+  font-size: clamp(20px, 4vw, 40px);
+  font-weight: 400;
+  margin-bottom: clamp(10px, 2vw, 20px);
+}
+
+.desc {
+  font-size: clamp(12px, 2.5vw, 24px);
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0 auto clamp(8px, 2vw, 16px);
+}
+.desc3{
+  font-size: clamp(14px, 2.5vw, 24px);
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0 auto clamp(8px, 2vw, 16px);
+}
+.desc2 {
+  font-size: clamp(12px, 2.5vw, 24px);
+  color: #4b5563;
+  line-height: 1.6;
+  margin: clamp(24px, 5vw, 48px) auto clamp(8px, 2vw, 16px);
+}
+
+.highlight {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.focus {
+  margin: clamp(12px, 4vw, 32px) 0;
+  font-size: clamp(14px, 3vw, 24px);
+  color: #111827;
+  font-weight: 600;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-top: 40px;
+}
+
+.footer > div {
+  flex: 1 1 300px;
+  max-width: 400px;
+  background-color: rgb(255, 255, 255);
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  height: clamp(48px, 6vw, 96px);
+  margin: auto;
+}
+
+.legal {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: #4b5563;
+  text-align: center;
+}
+
+.legal h4 {
+  font-size: clamp(14px, 3vw, 20px);
+  font-weight: 600;
+  margin-bottom: clamp(4px, 1vw, 8px);
+}
+
+.but {
+  margin-top: clamp(16px, 3vw, 30px);
+  font-weight: 600;
+  font-size: clamp(16px, 3vw, 24px);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+  padding: clamp(12px, 3vw, 16px) clamp(20px, 6vw, 32px);
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 1360px) {
+  .section {
+    padding: clamp(40px, 6vw, 80px) clamp(16px, 8vw, 160px);
+  }
+
+  .footer {
+    gap: 12px;
+  }
+
+  .footer > div {
+    flex: 1 1 260px;
+    max-width: 340px;
+    padding: 20px;
+  }
+
+  .logo {
+    height: clamp(44px, 5vw, 80px);
+  }
+
+  .but {
+    font-size: clamp(14px, 2.5vw, 20px);
+    padding: clamp(10px, 2.5vw, 14px) clamp(18px, 5vw, 28px);
+  }
+
+  .legal {
+    font-size: clamp(12px, 2vw, 16px);
+  }
+
+  .legal h4 {
+    font-size: clamp(12px, 2.5vw, 18px);
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: clamp(40px, 6vw, 96px) clamp(16px, 6vw, 120px);
+  }
+}
+
+@media (max-width: 764px) {
+  .section {
+    padding: 40px 16px;
+  }
+  .h2{
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+  .focus{
+    margin: 32px auto;
+  }
+  .logo{
+    height: 72px;
+  }
+  .legal{
+    text-align: start;
+  }
+  .but{
+    font-size: 16px;
+    padding: 12px 16px;
+    width:fit-content;
+    align-self: center;
+  }
+}

@@ -1,0 +1,372 @@
+.heroSection {
+  background: #f8f8f8;      /* Light gray background */
+  padding: 64px 193px;      /* 64px top/bottom, 193px left/right */
+}
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  text-align: center;
+}
+.navWrapper{
+  padding: 16px 193px;  
+  color: #000000;
+}
+.heroTitle {
+  font-size: 64px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;                
+  margin-bottom: 16px;     
+}
+.heroSubtitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0;               
+  margin-bottom: 24px;      
+}
+.heroText {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #4B4B4B;
+  margin: 0 auto;           
+  max-width: 1138px;        
+}
+
+
+
+@media (max-width: 1360px) {
+  .heroSection {
+    padding: 48px 120px;    
+  }
+  .navWrapper{
+    padding: 16px 120px;
+  }
+  .heroTitle {
+    font-size: 48px;      
+    margin-bottom: 12px;
+  }
+  .heroSubtitle {
+    font-size: 20px;       
+    margin-bottom: 20px;
+  }
+  .heroText {
+    font-size: 16px;       
+    max-width: 700px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .heroSection {
+    padding: 40px 80px;     
+  }
+  .navWrapper{
+    padding: 16px 80px;  
+  }
+  .heroTitle {
+    font-size: 40px;      
+    margin-bottom: 10px;
+  }
+  .heroSubtitle {
+    font-size: 18px;        
+    margin-bottom: 16px;
+  }
+  .heroText {
+    font-size: 15px;       
+    max-width: 600px;
+    line-height: 1.5;
+  }
+}
+@media (max-width: 860px)
+{
+  .navWrapper{
+    padding: 16px 40px;  
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 32px 16px;     /* minimal side padding */
+  }
+  .navWrapper{
+    padding: 8px 16px;
+  }
+  .heroTitle {
+    font-size: 32px;        /* tablet → mobile size */
+    margin-bottom: 8px;
+  }
+  .heroSubtitle {
+    font-size: 16px;        /* tablet → mobile size */
+    margin-bottom: 12px;
+  }
+  .heroText {
+    font-size: 14px;       
+    max-width: 100%;        
+    text-align: left;      
+    line-height: 1.4;
+  }
+}
+/* Sponser.module.css */
+
+.section {
+  padding: 64px 193px;
+  text-align: center;
+  background: #f8f8f8;
+}
+
+.h2 {
+  font-size: 64px;
+  font-weight: 600;
+  margin-bottom: 42px;
+  color: #000000; /* dark grey/black */
+}
+
+/* ---------------- GRID CONTAINER ---------------- */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+/* ---------------- CARD BASE STYLE ---------------- */
+.card {
+  width: 354px;
+  min-height: 357px; /* increased to accommodate description */
+  padding: 20px 20px 20px;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  background: white;
+  position: relative;
+  text-align: left;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover effect on each card */
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* ---------------- ICON BOX ---------------- */
+.iconBox {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 14px;
+  border-radius: 9px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 2.22px solid #dfdfdf;
+}
+
+.iconBox img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* ---------------- TITLE ---------------- */
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 32px; /* push title below the icon */
+  margin-bottom: 12px;
+  color: #111827; /* dark grey/black */
+}
+
+/* ---------------- DESCRIPTION ---------------- */
+.description {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #4D4D4D;
+  margin-bottom: 0; 
+  flex-grow: 1; 
+}
+
+/* ---------------- NOTE TEXT BELOW GRID ---------------- */
+.note {
+  font-size: 20px;
+  color: #6b7280;
+  margin-bottom: 32px;
+}
+
+/* ---------------- BUTTON STYLE ---------------- */
+.but {
+  font-weight: 600;
+  font-size: 24px;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+  padding: 16px 32px;
+}
+
+/* ---------------- GRADIENT BORDERS / BACKGROUNDS ---------------- */
+.red {
+  background: 
+    linear-gradient(white, white) padding-box, 
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+  border: 2px solid transparent;
+}
+.orange {
+  background: 
+    linear-gradient(white, white) padding-box, 
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+  border: 2px solid transparent;
+}
+.blue {
+  background: 
+    linear-gradient(white, white) padding-box, 
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+  border: 2px solid transparent;
+}
+.purple {
+  background: 
+    linear-gradient(white, white) padding-box, 
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+  border: 2px solid transparent;
+}
+
+/* -------------- RESPONSIVE BREAKPOINTS --------------- */
+
+/* For screens below 1360px */
+@media (max-width: 1360px) {
+  .section {
+    padding: 48px 120px;
+  }
+
+  .h2 {
+    font-size: 48px;
+    margin-bottom: 32px;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+
+  .card {
+    width: 300px;
+        min-height: 330px;
+    padding: 48px 20px 20px;
+  }
+
+  .iconBox {
+    top: -36px;
+    padding: 12px;
+  }
+
+  .iconBox img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 1.3;
+
+  }
+
+  .note {
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+
+
+}
+
+/* For tablets (up to 1024px) */
+@media (max-width: 1024px) {
+  .grid {
+    gap: 20px;
+  }
+  .card {
+    width: 45%; /* two cards per row */
+    min-height: auto;
+  }
+  .section {
+    padding: 60px 80px;
+  }
+}
+
+/* Mobile devices (up to 768px) */
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 16px;
+  }
+
+  .h2 {
+    font-size: 32px;
+  }
+
+  .grid {
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 40px 16px 16px;
+    text-align: center;
+  }
+
+  .iconBox {
+    left: 50%;
+    top: -30px;
+    padding: 10px;
+  }
+
+  .iconBox img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .note {
+    font-size: 14px;
+    margin-bottom: 24px;
+    padding: 0 16px;
+  }
+
+  .but {
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+}
+
+/* For wide screens (min-width 1050px) adjust the icon alignment */
+@media (min-width: 1050px) {
+  .card {
+    position: relative;
+  }
+
+  .iconBox {
+    left: 24px;
+    transform: none;
+  }
+
+  .title {
+    margin-left: 0; /* text is left-aligned */
+  }
+}

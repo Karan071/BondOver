@@ -1,0 +1,262 @@
+/* Outer wrapper for padding and background */
+.wrapper {
+  padding: clamp(24px, 4vw, 48px) clamp(16px, 12vw, 240px);
+  display: flex;
+  justify-content: center;
+  background: #FEFEFE;
+}
+
+/* Inner container for layout and border styling */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: clamp(24px, 4vw, 48px) clamp(16px, 6vw, 48px);
+  border: 2px solid transparent;
+  border-radius: 20px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(to right, red, orange, green, blue, violet) border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Image styling */
+.image {
+  margin-bottom: clamp(16px, 2vw, 24px);
+  flex: 1 1 clamp(200px, 40vw, 500px);
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Content section */
+.content {
+  flex: 1 1 clamp(300px, 50vw, 600px);
+  padding-left: clamp(0px, 4vw, 40px);
+}
+
+/* Heading */
+.h2 {
+  font-size: clamp(28px, 4vw, 64px);
+  font-weight: 800;
+  margin-bottom: clamp(12px, 2vw, 24px);
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #4b5563;
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+/* Intro text */
+.intro {
+  font-weight: 500;
+  font-size: clamp(18px, 2.5vw, 24px);
+}
+
+/* Benefit Grid */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 16px);
+  margin-top: clamp(8px, 2vw, 16px);
+}
+
+/* Each card */
+.card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: clamp(16px, 2vw, 34px) clamp(8px, 2vw, 12px);
+  display: flex;
+  gap: clamp(6px, 1vw, 10px);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+  font-size: clamp(16px, 2.5vw, 20px);
+  width: clamp(120px, 25vw, 200px);
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.iconPlaceholder {
+  display: flex;
+  gap: clamp(6px, 1vw, 10px);
+  align-items: center;
+  justify-content: center;
+}
+
+.iconImage {
+  height: clamp(16px, 3vw, 32px);
+  width: clamp(16px, 3vw, 32px);
+}
+
+.title {
+  font-weight: 600;
+  font-size: clamp(14px, 2vw, 20px);
+  width: clamp(100px, 10vw, 120px);
+  color: #111827;
+}
+
+.note {
+  font-size: clamp(14px, 2vw, 20px);
+  color: #6b7280;
+  margin: clamp(12px, 2vw, 16px) 0;
+}
+
+.but {
+  font-weight: 600;
+  font-size: clamp(16px, 3vw, 24px);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+  padding: clamp(10px, 2vw, 16px) clamp(16px, 4vw, 32px);
+}
+
+/* 👇 Scale everything smaller after 1750px */
+@media (max-width: 1750px) {
+  .wrapper {
+    padding: clamp(16px, 3vw, 32px);
+  }
+
+  .container {
+    padding: clamp(16px, 3vw, 32px);
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .content {
+    padding-left: clamp(8px, 2vw, 24px);
+  }
+
+  .image {
+    margin-bottom: clamp(12px, 2vw, 20px);
+  }
+}
+/* Default: No scaling on large screens */
+.containerScale {
+  display: flex;
+  justify-content: center;
+  transform: scale(1);
+  transform-origin: top center;
+}
+
+/* At 1360px, scale everything proportionally */
+@media (max-width: 1370px) {
+  .containerScale {
+    transform: scale(0.9); /* Adjust scale as needed */
+  }
+  .container {
+    max-width: 100%;
+    padding: 24px;
+  }
+
+  .content {
+    padding-left: clamp(0px, 3vw, 24px);
+  }
+
+  .image img {
+    max-width: 90%;
+  }
+
+  .grid {
+    gap: 12px;
+  }
+
+  .card {
+    width: clamp(100px, 28vw, 160px);
+  }
+}
+
+
+/* Optional: Further scaling for tighter screens */
+@media (max-width: 1200px) {
+  .containerScale {
+    transform: scale(0.8);
+  }
+}
+
+
+/* Extra small screens */
+@media (max-width: 764px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(12px, 3vw, 24px);
+  }
+
+  .content {
+    padding: clamp(12px, 2vw, 24px) 0 0;
+    text-align: start;
+  }
+
+  .grid {
+    gap: clamp(6px, 1vw, 12px);
+  }
+
+  .card {
+    width: clamp(100px, 30vw, 120px);
+    padding: clamp(12px, 2vw, 16px) 0;
+  }
+
+  .iconImage {
+    height: clamp(10px, 2vw, 16px);
+    width: clamp(10px, 2vw, 16px);
+  }
+
+  .title {
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 400;
+  }
+
+  .but {
+    font-size: clamp(14px, 3vw, 18px);
+  }
+}
+@media (max-width: 500px) {
+  .containerScale {
+    transform: scale(1);
+  }
+
+  .grid {
+    flex-wrap: wrap; /* ✅ Required by you */
+    justify-content: space-between;
+    gap: clamp(6px, 2vw, 8px);
+  }
+
+  .card {
+    width: calc(33.333% - 8px); /* 3 cards per row with small gap */
+    padding: clamp(8px, 1.5vw, 12px);
+    font-size: clamp(10px, 2vw, 14px);
+    text-align: center;
+  }
+
+  .iconImage {
+    height: clamp(14px, 3vw, 20px);
+    width: clamp(14px, 3vw, 20px);
+  }
+
+  .title {
+    font-size: clamp(9px, 2vw, 12px);
+    font-weight: 500;
+    max-width: 60px;
+  }
+
+  .note {
+    font-size: clamp(10px, 2vw, 12px);
+  }
+
+  .but {
+    font-size: clamp(12px, 3vw, 16px);
+    padding: clamp(6px, 1.5vw, 10px) clamp(10px, 3vw, 16px);
+  }
+}
+

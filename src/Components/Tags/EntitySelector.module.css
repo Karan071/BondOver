@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  background-color: #f5f5f5;
+  transform: scale(1.03);
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.selected {
+  border: 2px solid #007bff;
+  background: #e6f0ff;
+}

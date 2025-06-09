@@ -1,0 +1,44 @@
+.bosWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 clamp(16px, 0.5vw, 216px);
+  padding-top: clamp(40px,5vw,96px);
+  background-color: #fefefe;
+}
+
+.bosSection {
+  text-align: center;
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.bosHeading {
+  margin-bottom: 1rem;
+}
+
+.bosHeadingGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.25rem, 1vw, 1rem); /* responsive spacing between spans */
+}
+
+.bosHeadingSpan {
+  font-size: clamp(32px, 5vw, 3rem); /* 32px to 48px */
+  font-weight: 700;
+  color: #111;
+}
+
+.bosHeadingRest {
+  font-size: clamp(32px, 5vw, 3rem);
+  font-weight: 600;
+  color: #222;
+}
+
+.bosParagraph {
+  font-size: clamp(14px, 2.5vw, 1.5rem); /* 18px to 24px */
+  color: #444;
+  line-height: 1.75;
+  margin-top: 1rem;
+}

@@ -1,0 +1,401 @@
+
+.section {
+  padding: 96px 10vw;
+  background-color: #F8F8F8;
+}
+
+
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 24px;
+  color: #4b5563;
+}
+
+.header span {
+  font-size: 20px;
+  color: #6b7280;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 24px;
+}
+
+.mingrid{
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  padding: clamp(16px, 5vw, 32px);
+  padding-top: 74px;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(16px, 5vw, 24px);
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.card img {
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.topImage{
+  align-items:end
+}
+
+.label {
+  font-size: 20px;
+  font-weight: 400;
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    red 0%,
+    orange 16%,
+    yellow 33%,
+    green 50%,
+    blue 66%,
+    indigo 83%,
+    violet 100%
+  );
+
+  background-size: 100% auto; /* Stretch gradient much more */
+  background-position: left center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.text {
+  font-size: 20px;
+  color: #4b5563;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.button{
+  margin-top: 24px;
+}
+
+.img1{
+  position: absolute;
+  right:0;
+  bottom: 0;
+}
+.im2{
+  position: absolute;
+  right: 0px;
+  top: 36px;
+}
+.im3{
+  position: absolute;
+  bottom: 0%;
+  right: 20px;
+}
+
+.header h2 {
+  font-size: clamp(28px, 5vw, 48px);
+}
+
+.header p {
+  font-size: clamp(16px, 2vw, 24px);
+}
+
+.header span {
+  font-size: clamp(14px, 2vw, 20px);
+}
+
+.title {
+  font-size: clamp(24px, 4vw, 40px);
+}
+
+.text {
+  font-size: clamp(16px, 2.5vw, 20px);
+}
+
+.label {
+  font-size: clamp(16px, 2.5vw, 20px);
+}
+
+.cont1{
+  max-width: 300px;
+}
+.cont5{
+  max-width: 400px;
+}
+.cont4{
+  max-width: 350px;
+}
+.im2{
+  order:1;
+}
+
+@media (max-width: 1700px)
+{
+  .cont1{
+  max-width: 250px;
+  }
+  .cont5{
+  max-width: 300px;
+  }
+  
+  .label{
+    font-size: 16px;
+  }
+  .title{
+    font-size: 32px;
+  }
+  .text{
+    font-size: 18px;
+  }
+  .img1{
+    position: absolute;
+    max-height: 200px;
+    width: auto;
+  }
+  .im2{
+    max-height: 200px;
+    width: auto;
+  }
+  .im3{
+    max-height: 300px;
+    width: auto;
+  }
+}
+@media (max-width: 1700px){
+  .img1{
+    max-width: 300px;
+  }
+  .im1{
+    max-width: 200px;
+  }
+  .im2{
+    max-width: 500px;
+  }
+  .im3{
+    max-width: 200px;
+  }
+  .img3{
+    max-width: 210px;
+  }
+}
+@media (max-width: 1500px)
+{
+  .cont1{
+  max-width: 220px;
+  }
+  .cont2{
+    max-width: 250px;
+  }
+  .cont5{
+  max-width: 300px;
+  }
+  .cont4{
+    max-width: 200px;
+  }
+  .label{
+    font-size: 15px;
+  }
+  .title{
+    font-size: 28px;
+  }
+  .text{
+    font-size: 17px;
+  }/*
+  .img1{
+    max-height: 250px;
+    width: auto;
+  }
+  .im2{
+    max-height: 400px;
+    width: auto;
+  }
+  .im3{
+    max-height: 250px;
+    width: auto;
+  }*/
+  .button{
+    font-size: 18px;
+    padding: 12px 16px;
+    width:max-content;
+  }
+}
+@media (max-width: 1400px)
+{
+  .cont1{
+  max-width: 150px;
+  }
+  .cont5{
+    max-width: 200px;
+  }
+}
+/* Fix for 1250px responsive image order */
+
+@media (max-width: 1250px) {
+  .cont1,.cont2,.cont3,.cont4,.cont5{
+    max-width: fit-content;
+  }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(16px, 5vw, 24px);
+    position: relative;
+  }
+
+  .card picture,
+  .card img {
+    order: -1;
+    position: static !important;
+    height: 200px;
+    max-width: 1000px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .card .content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .img1,
+  .img2,
+  .img3 {
+    position: static !important;
+    max-height: unset;
+    margin-bottom: 16px;
+    display: block;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .header h2{
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .header p{
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .header span{
+    font-size: 12px;
+  }
+  .content{
+    text-align: left;
+  }
+  .card{
+    padding: 16px;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+  }
+  .label{
+    font-size: 12px;
+  }
+  .title{
+    font-size: 24px;
+  }
+  .text{
+    font-size: 14px;
+  }
+  .grid{
+    gap: 32px;
+  }
+  .content{
+    align-self: self-start;
+    align-items: flex-start;
+    justify-content:flex-start;
+  }
+  .button{
+    font-size: 16px;
+    padding: 12px 16px;
+    margin: auto;
+  }
+}
+@media (max-width: 768px) {
+  .header, 
+  .header h2,
+  .header p,
+  .header span,
+  .card,
+  .card .content,
+  .content,
+  .label,
+  .title,
+  .text {
+    text-align: left;
+  }
+}
+
+@media (max-width:500px) {
+  .button{
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}
+@media (max-width:480px){
+  .card img{
+    max-width: 250px;
+  }
+}
+@media (min-width: 1251px) {
+  .img1 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-height: 300px;
+    width: auto;
+  }
+
+  .im2 {
+    position: absolute;
+    right: 0;
+    top: 36px;
+    max-height: 300px;
+    width: auto;
+  }
+
+  .im3 {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    max-height: 300px;
+    width: auto;
+  }
+}
