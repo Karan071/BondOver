@@ -7,7 +7,7 @@ import avatar2 from '../../assets/Avatar/Avatar2.png';
 
 function HeritageEvents() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id='about'>
       <div className={styles.images}>
         <img src={img1} alt="Event 1" className={styles.eventImage} />
         <img src={img2} alt="Event 2" className={styles.eventImageMain} />

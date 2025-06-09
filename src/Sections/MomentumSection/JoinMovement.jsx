@@ -14,7 +14,7 @@ import Button from '../../Components/button.jsx';
 import WhatYouGet from "../../Components/WhatYouGet.jsx";
 const JoinTheMovement = () => {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id='joinas'>
       <div className={styles.header}>
         <h2>Join The Movement</h2>
         <p>Be More Than a Spectator. Be Part of the Change</p>

@@ -20,7 +20,7 @@ const partners = [
 const PartnersSection = () => {
   const navigate = useNavigate();
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id='partners'>
       <h2 className={styles.h2}>Our Partners</h2>
       <p className={styles.subtitle}>We proudly collaborate with:</p>
 

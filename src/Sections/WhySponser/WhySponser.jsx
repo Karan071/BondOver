@@ -14,7 +14,7 @@ const benefits = [
 const SponsorSection = () => {
   const navigate = useNavigate();
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} id="sponser">
       <div className={styles.container}>
         {/* Left-side image */}
         <div className={styles.image}>

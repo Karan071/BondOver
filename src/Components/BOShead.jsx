@@ -2,7 +2,7 @@ import styles from './BOShead.module.css';
 
 export default function BOShead() {
   return (
-    <div className={styles.bosWrapper}>
+    <div className={styles.bosWrapper} id='events'>
       <div className={styles.bosSection}>
         <h2 className={styles.bosHeading}>
           <div className={styles.bosHeadingGroup}>

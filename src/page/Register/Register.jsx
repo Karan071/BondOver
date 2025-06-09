@@ -1,11 +1,13 @@
 import Navbar from "../../Layout/Navbar"
+import styles from "./Register.module.css";
 export default function Register() {
     return (
         <div>
-            <Navbar/>
-            
-            Register
+            <div className={styles.navWrapper}>
+                <Navbar />
             </div>
+            Register
+        </div>
     )
 }
 

@@ -8,6 +8,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 button {
   cursor: pointer;
   border: none;
@@ -142,3 +148,5 @@ button {
     padding: 24px 32px;
   }
 }
+
+

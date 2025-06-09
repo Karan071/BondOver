@@ -20,29 +20,29 @@ const Landing = () => {
     const BosData = BOSdata.map((data) => <BOS key={data.id} {...data} />);
     const BosDataE = BOSdataE.map((data) => <BOSE key={data.id} {...data} />);
     return (
-    <div>
-        <>
-            <HeroSection />
-            <Heritage />
-            <section>
-            <BOShead />
-            <div className="gridContainer">{BosData}</div>
-            </section>
-            <section>
-            <BOShead />
-            <div className="outter">{BosDataE}</div>
-            </section>
-            <Movement />
-            {/* <SponserSection /> */}
-            <WhySponcerSection />
-            <PatnerSection />
-            <InstaTrackSection />
-            <CommunityTalksSection />
-            <StayConnectedSection />
-            <WellfareSection />
-            <Footer />
-        </>
-    </div>
+        <div>
+            <>
+                <HeroSection />
+                <Heritage />
+                <section>
+                    <BOShead />
+                    <div className="gridContainer">{BosData}</div>
+                </section>
+                <section>
+                    <BOShead />
+                    <div className="outter">{BosDataE}</div>
+                </section>
+                <Movement />
+                {/* <SponserSection /> */}
+                <WhySponcerSection />
+                <PatnerSection />
+                <InstaTrackSection />
+                <CommunityTalksSection />
+                <StayConnectedSection />
+                <WellfareSection />
+                <Footer />
+            </>
+        </div>
     );
 };
 
