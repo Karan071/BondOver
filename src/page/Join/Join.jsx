@@ -68,8 +68,8 @@ export default function Join() {
   return (
     <>
       <div className="navWrapper">
-          <Navbar />
-        </div>
+        <Navbar />
+      </div>
 
       <section className="heroSection">
         <div className="container">
@@ -155,16 +155,16 @@ function JoinForm({
     <section className="sponsor-container">
       <h1 className="sponsor-title text-left">Fill in your details</h1>
       <form onSubmit={handleSubmit}>
-        <div className="section">
+        <div className="divideSection">
           <RenderInput
-            label="Full name "
+            label="Full name"
             placeholder="Enter your name"
             value={form.name}
-            onChange={handleChange("name")}
+            onChange={handleChange("name")} section
           />
-          <div className="sts-wrapper">
+          <div className="section">
             <span className="sts-heading">Gender *</span>
-            <div className="sts-options">
+            <div className="genderOptions">
               {["male", "female", "other"].map((g) => (
                 <button
                   key={g}
@@ -181,14 +181,15 @@ function JoinForm({
             </div>
           </div>
         </div>
-        <RenderInput
-          label="DOB "
-          type="date"
-          value={form.dob}
-          onChange={handleChange("dob")}
-        />
 
-        <div className="section">
+
+        <div className="divideSection">
+          <RenderInput
+            label="DOB "
+            type="date"
+            value={form.dob}
+            onChange={handleChange("dob")}
+          />
           <RenderInput
             label="Locality "
             placeholder="Enter Your Society Name (As Listed On Google Maps)"
@@ -196,6 +197,7 @@ function JoinForm({
             onChange={handleChange("locality")}
             className="fullWidth"
           />
+          
         </div>
 
         <div className="section">
