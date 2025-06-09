@@ -7,6 +7,7 @@
   margin: 0 auto;
   text-align: center;
 }
+
 .navWrapper{
   padding: 16px 193px;  
   color: #000000;
@@ -113,7 +114,7 @@
 .sponsor-container {
   max-width: 1136px;
   margin: 0 auto;
-  padding: 32px;
+  padding: 60px;
   background-color: #FEFEFE;
   border: 1px solid #FEFEFE;
   color: #000000;
