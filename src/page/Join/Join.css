@@ -83,10 +83,10 @@
   border: 1px solid #eee;
   border-radius: 6px;
   margin-bottom: 24px;
-  font-size: 24px;
+  font-size: 20px;
   margin-top: 20px;
   display: flex;
-  justify-content: start;
+  align-items: center;
   gap: 10px;
   font-weight: 600;
 
@@ -95,10 +95,10 @@
   padding: 12px;
   border-radius: 6px;
   margin-bottom: 24px;
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 20px;
   display: flex;
-  justify-content: start;
+  align-items: center;
   gap: 10px;
 
 }
