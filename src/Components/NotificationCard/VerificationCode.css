@@ -1,0 +1,96 @@
+.verification-modal {
+  width: 400px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: sans-serif;
+}
+
+.verification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.verification-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.verification-header .icon {
+  margin-left: 8px;
+  font-size: 1.2rem;
+}
+
+.verification-header .close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.instruction {
+  margin: 16px 0;
+  font-size: 0.95rem;
+  align-items: center;
+  color: #787878;
+}
+
+.change-btn {
+  background: none;
+  border: none;
+  color: #e60023;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.code-inputs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.code-inputs input {
+  width: 48px;
+  height: 56px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.verify-btn {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff003c, #00e6ff);
+  color: #000;
+  cursor: pointer;
+}
+
+.verify-btn:hover {
+  opacity: 0.9;
+}
+
+.resend-section {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.resend-btn {
+  display: block;
+  background: none;
+  border: none;
+  color: #e60023;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 4px;
+}
