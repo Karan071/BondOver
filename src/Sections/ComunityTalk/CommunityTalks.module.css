@@ -25,8 +25,7 @@
   text-align: left;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   width: 30%; 
-  min-width: 280px;
-  max-width: 320px;
+  min-width: 320px;
   box-sizing: border-box;
 }
 
@@ -166,4 +165,9 @@
     height: 36px;
   }
   
+}
+@media (max-width: 500px) {
+   .section {
+    padding: 48px 0px;
+  }
 }

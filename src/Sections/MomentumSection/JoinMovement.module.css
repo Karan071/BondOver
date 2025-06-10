@@ -399,3 +399,8 @@
     width: auto;
   }
 }
+@media (max-width:350px){
+  .card img{
+    max-width: 200px;
+  }
+}

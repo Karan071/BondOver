@@ -64,7 +64,7 @@
 .avatarYellow {
   border-color: #fbbf24;
   position: relative;
-  left: clamp(12px, 2vw, 24px);
+  left: clamp(40px, 2vw, 60px);
 }
 
 .avatarOrange {
@@ -214,7 +214,7 @@
   }
 
   .avatarYellow {
-    left: clamp(14px, 2vw, 20px);
+    left: clamp(40px, 2vw, 70px);
   }
 
   .avatarOrange {
@@ -251,8 +251,18 @@
     padding-left: 28px;
   }
 }
+@media (max-width: 1000px){
+.avatarYellow {
+    left: clamp(35px, 2vw, 55px);
+  }
+}
+@media (max-width: 600px){
+.avatarYellow {
+    left: clamp(25px, 2vw, 45px);
+  }
+}
 @media (max-width: 480px){
   .images > img{
-    max-width: 100px;
+    max-width: 90px;
   }
 }

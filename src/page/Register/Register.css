@@ -112,14 +112,23 @@
 }
 /* ─── Register For Event Section ─────────────────────────────────────────────── */
 .sponsor-container {
-  max-width: 1136px;
   margin: 0 auto;
   padding: 60px;
   background-color: #FEFEFE;
   border: 1px solid #FEFEFE;
   color: #000000;
+  max-width: 65% !important;
 }
-
+@media (max-width:1300px) {
+  .sponsor-container{
+    max-width: 80% !important;
+  }
+}
+@media (max-width:800px) {
+  .sponsor-container{
+    max-width: 100% !important;
+  }
+}
 .sponsor-title {
   font-size: 42px;
   font-weight: 600;
