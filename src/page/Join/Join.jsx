@@ -96,7 +96,7 @@ export default function Join() {
         <WhatYouGet />
       </section>
 
-      <section className="sponsor-container">
+      <section className="sponsor-container upperSponsor">
         <h1 className="sponsor-title text-left">Register For Event</h1>
 
         <div className="section">
@@ -223,10 +223,11 @@ function JoinForm({
             onChange={handleChange("dob")}
           />
           <RenderInput
-            label="Locality "
-            placeholder="Enter Your Society Name (As Listed On Google Maps)"
-            value={form.locality}
-            onChange={handleChange("locality")}
+            label="Email "
+            type="email"
+            placeholder="Enter Email"
+            value={form.email}
+            onChange={handleChange("email")}
             className="fullWidth"
           />
 
@@ -234,11 +235,10 @@ function JoinForm({
 
         <div className="section">
           <RenderInput
-            label="Email "
-            type="email"
-            placeholder="Enter Email"
-            value={form.email}
-            onChange={handleChange("email")}
+            label="Locality "
+            placeholder="Enter Your Society Name (As Listed On Google Maps)"
+            value={form.locality}
+            onChange={handleChange("locality")}
             className="fullWidth"
           />
         </div>
@@ -261,7 +261,7 @@ function JoinForm({
           </div>
         </div>
 
-        <div className="note">
+        <div className="notea">
           <img src={wa} alt="target" className="logo" /> Confirmation and event kit details will be shared via
           email/WhatsApp
         </div>

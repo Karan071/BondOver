@@ -1,3 +1,6 @@
+.sponsor-container{
+  border: 1px solid #eee;
+}
 .section-inner {
   margin: 0 auto;
   padding: 32px;
@@ -88,26 +91,18 @@
   font-weight: 600;
 
 }
-
-.submit-btn {
-  width: 290px;
-  height: 68px;
-  padding: 16px 48px;
-  font-size: 20px;
-  font-weight: 500;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background: #fff;
-  background-image:
-    linear-gradient(#fff,#fff),
-    linear-gradient(
-      90deg,
-      #e60023 0%,#ff9f00 20%,#ffee00 40%,#00b140 60%,#0072bb 80%,#4f449d 100%
-    );
-  background-clip: padding-box, border-box;
-  cursor: pointer;
+.notea {
+  padding: 12px;
+  border-radius: 6px;
   margin-bottom: 24px;
+  font-size: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+
 }
+
 
 .footer-text {
   text-align: center;
@@ -171,11 +166,7 @@
   color: #e60023;
 }
 
-@media (max-width: 700px) {
-  .divideSection {
-    grid-template-columns: 1fr;
-  }
-}
+
 .gradientButton{
   padding: 16px 48px;
   font-size: 28px;
@@ -196,4 +187,59 @@
 .sts-selected{
   color: red;
   background-color: transparent;
+}
+
+.section-header{
+  margin-bottom: 40px;
+  font-size: 20px;
+}
+.sponsor-title{
+  font-size: 40px;
+}
+.upperSponsor{
+  max-width: 65%;
+}
+@media (max-width: 1300px){
+  .upperSponsor{
+  max-width: 80%;
+  }
+}
+@media (max-width: 700px) {
+  .divideSection {
+    grid-template-columns: 1fr;
+  }
+  .note{
+    font-size: 16px;
+  }
+  .notea{
+    font-size: 14px;
+  }
+  .upperSponsor{
+  max-width: 100%;
+}
+.sponsor-title{
+  font-size: 32px;
+}
+.section-header{
+  font-size: 16px;
+}
+}
+@media (max-width: 680px) {
+  .genderFlexRow{
+    padding-left: 16px;
+  }
+  .sponsor-container{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 500px) {
+  .genderFlexRow{
+    flex-direction: column;
+  }
+}
+@media (max-width: 350px) {
+  .sts img{
+    min-width: 50px !important;
+  }
 }
