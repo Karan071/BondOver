@@ -1,5 +1,5 @@
 .card {
-  width: 342px !important;
+  width: 320px !important;
   border-radius: 16px;
   background-color: #ffffff;
   border: solid 2px rgb(0,0,0,0.1);
@@ -161,6 +161,12 @@
   .title {
     font-size: 18px;
     height: 45px; /* Adjust based on your font size and desired line height */
+    height: 56px; /* Adjust based on your font size and desired line height */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
   }
 
   .age {
@@ -200,6 +206,12 @@
   .title {
     font-size: 16px;
     height: 40px; /* Adjust based on your font size and desired line height */
+    height: 50px; /* Adjust based on your font size and desired line height */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
   }
   .location,
   .date {
@@ -217,4 +229,16 @@
   .but{
     font-size: 12px;
   }
+}
+@media (max-width: 480px)
+{
+  .card{
+    width: 260px !important;
+  } 
+}
+@media (max-width: 340px)
+{
+  .card{
+    width: 220px !important;
+  } 
 }
