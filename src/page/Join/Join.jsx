@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../../Layout/Navbar";
 import Footer from "../../Layout/footer/Footer";
 import WhatYouGet from "../../Components/WhatYouGet";
@@ -10,21 +10,18 @@ import VolunteerIcon from "../../assets/Movement/JoinFormIcon/Volunteer.png";
 import OrganizerIcon from "../../assets/Movement/JoinFormIcon/Organizer.png";
 import ContentIcon from "../../assets/Movement/JoinFormIcon/Content.png";
 import SupporterIcon from "../../assets/Movement/JoinFormIcon/Supporter.png";
-<<<<<<< HEAD
 import Target from "../../assets/logos/Target.png"
 import wa from "../../assets/logos/w1.png"
 
-=======
->>>>>>> 7d56ddc31179323348530563a1fd2be0380d063e
 
 import "./Join.css";
 
 const JOIN_AS_OPTIONS = [
-  { id: "player",    label: "Player",          icon: PlayerIcon },
-  { id: "volunteer", label: "Volunteer",       icon: VolunteerIcon },
-  { id: "organizer", label: "Organizer",       icon: OrganizerIcon },
-  { id: "creator",   label: "Content Creator", icon: ContentIcon },
-  { id: "supporter", label: "Supporter",       icon: SupporterIcon },
+  { id: "player", label: "Player", icon: PlayerIcon },
+  { id: "volunteer", label: "Volunteer", icon: VolunteerIcon },
+  { id: "organizer", label: "Organizer", icon: OrganizerIcon },
+  { id: "creator", label: "Content Creator", icon: ContentIcon },
+  { id: "supporter", label: "Supporter", icon: SupporterIcon },
 ];
 
 export default function Join() {
@@ -39,9 +36,9 @@ export default function Join() {
     gender: "male",
     joinAs: "",
   });
-  const [loading, setLoading]   = useState(false);
-  const [success, setSuccess]   = useState(false);
-  const [error, setError]       = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -215,66 +212,50 @@ function JoinForm({
 
         </div>
 
-          <div className="section">
-            <RenderInput
-              label="Email "
-              type="email"
-              placeholder="Enter Email"
-              value={form.email}
-              onChange={handleChange("email")}
-              className="fullWidth"
-            />
-          </div>
+        <div className="section">
+          <RenderInput
+            label="Email "
+            type="email"
+            placeholder="Enter Email"
+            value={form.email}
+            onChange={handleChange("email")}
+            className="fullWidth"
+          />
+        </div>
 
-<<<<<<< HEAD
+
+        <div className="sts-wrapper fullWidth">
+          <span className="sts-heading">Join As *</span>
+          <div className="sts-options">
+            {JOIN_AS_OPTIONS.map(({ id, label, icon }) => (
+              <button
+                key={id}
+                type="button"
+                className={`sts-btn ${form.joinAs === id ? "sts-btn--selected" : ""}`}
+                onClick={setJoinAs(id)}
+              >
+                <img src={icon} alt={label} className="sts-btn__icon-img" />
+                <span className="sts-btn__label">{label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="note">
           <img src={wa} alt="target" className="logo" /> Confirmation and event kit details will be shared via
           email/WhatsApp
         </div>
-=======
-          <div className="sts-wrapper fullWidth">
-            <span className="sts-heading">Gender *</span>
-            <div className="sts-options">
-              {["male", "female", "other"].map((g) => (
-                <button
-                  key={g}
-                  type="button"
-                  className={`sts-btn ${
-                    form.gender === g ? "sts-btn--selected" : ""
-                  }`}
-                  onClick={setGender(g)}
-                >
-                  {/* Assuming you have icons named male.svg etc */}
-                  <img src={`/icons/${g}.svg`} alt={g} className="sts-btn__icon-img" />
-                  <span className="sts-btn__label">
-                    {g[0].toUpperCase() + g.slice(1)}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
->>>>>>> 7d56ddc31179323348530563a1fd2be0380d063e
 
-          <div className="sts-wrapper fullWidth">
-            <span className="sts-heading">Join As *</span>
-            <div className="sts-options">
-              {JOIN_AS_OPTIONS.map(({ id, label, icon }) => (
-                <button
-                  key={id}
-                  type="button"
-                  className={`sts-btn ${
-                    form.joinAs === id ? "sts-btn--selected" : ""
-                  }`}
-                  onClick={setJoinAs(id)}
-                >
-                  <img src={icon} alt={label} className="sts-btn__icon-img" />
-                  <span className="sts-btn__label">{label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="wrapBtn">
+          <button
+            type="submit"
+            className="gbtn SubmitBtn"
+            disabled={loading}
+          >
+            {loading ? "Submitting…" : "Register Now"}
+          </button>
+        </div>
 
-<<<<<<< HEAD
         <div className="note">
           <img src={Target} alt="target" className="logo" /> Don’t miss your chance to be part of something bigger than the game.
         </div>
@@ -285,31 +266,5 @@ function JoinForm({
         {error && <p className="error-message">{error}</p>}
       </form>
     </section>
-=======
-          <div className="note">
-            📧 Confirmation and event kit details will be shared via
-            email/WhatsApp
-          </div>
-
-          <div className="wrapBtn">
-            <button
-              type="submit"
-              className="gbtn SubmitBtn"
-              disabled={loading}
-            >
-              {loading ? "Submitting…" : "Register Now"}
-            </button>
-          </div>
-
-          {success && (
-            <p className="success-message">Form submitted successfully!</p>
-          )}
-          {error && <p className="error-message">{error}</p>}
-        </form>
-      </section>
-
-      <Footer />
-    </>
->>>>>>> 7d56ddc31179323348530563a1fd2be0380d063e
   );
 }
