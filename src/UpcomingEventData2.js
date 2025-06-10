@@ -1,22 +1,39 @@
-import img from './assets/TempPhoto.png'
+import useListing from "./Hooks/useListing";
+import img from "./assets/TempPhoto.png";
 
-export default [
-  {
-    id: 1,
-    image: img,
-    label: 'Bond Over Sports',
-    title: 'A Day of Play, Connection & Community',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-    description: "Whether you're a player, parent, coach, or enthusiast — this is your field. Join us for friendly matches, team-building games, and meaningful conversations in the spirit of sportsmanship."
-  },
-  {
-    id: 2,
-    image: img,
-    label: 'Bond Over Sports',
-    title: 'A Day of Play, Connection & Community',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-    description: "Whether you're a player, parent, coach, or enthusiast — this is your field. Join us for friendly matches, team-building games, and meaningful conversations in the spirit of sportsmanship."
-  }
-];
+const API_BASE = "http://154.26.130.161/hswf/api/event/listing";
+
+export default function useUpcomingEventData2() {
+  const { data, loading, error } = useListing();
+
+  // Ensure we always have an array to map over
+  const eventList = Array.isArray(data?.data) ? data.data : [];
+
+  const mappedData = eventList.map((item, idx) => ({
+    id: item.id || idx,
+    image: item.event_banner
+      ? API_BASE + item.event_banner.replace(/^public\//, "")
+      : img,
+    label: "Bond Over Sports",
+    title: item.name || item.title,
+    location: item.venue_name || "",
+    date: item.start_date
+      ? formatEventDate(item.start_date, item.end_date)
+      : "",
+    description: item.description || "",
+  }));
+
+  return { data: mappedData, loading, error };
+}
+
+
+
+function formatEventDate(start, end) {
+  const opts = { year: "numeric", month: "short", day: "numeric" };
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  return `${startDate.toLocaleDateString(
+    "en-GB",
+    opts
+  )} – ${endDate.toLocaleDateString("en-GB", opts)}`;
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import Logo from '../assets/Logo.png';
 import Button from '../Components/button.jsx';
@@ -19,7 +19,9 @@ function Navbar() {
 
   return (
     <div className={styles.logoNav}>
-      <img src={Logo} alt="BOS Logo" className={styles.logo} />
+      <Link to="/" className={styles.logoLink}>
+        <img src={Logo} alt="BOS Logo" className={styles.logo} />
+      </Link>
 
       <nav className={`${styles.nav} ${isMenuOpen ? styles.mobileOpen : ''}`}>
         {isMenuOpen && (
@@ -35,7 +37,7 @@ function Navbar() {
         <a href="#partners" style={{ color: linkColor }}>PARTNERS</a>
         <a href="#insta" style={{ color: linkColor }}>INSTA TRACK</a>
         <a href="#network" style={{ color: linkColor }}>HSWF.NETWORK</a>
-          <Button className={`${styles.joinBtn} ${styles.inNav}`} text="Join" onClick={() => navigate("/join")} />
+        <Button className={`${styles.joinBtn} ${styles.inNav}`} text="Join" onClick={() => navigate("/join")} />
       </nav>
 
       {!isMenuOpen && (
@@ -47,7 +49,7 @@ function Navbar() {
       )}
 
       <div className={styles.joinButtonWrapper}>
-        <Button className={`${styles.joinBtn} ${styles.outNav}`} text="Join" onClick={() => navigate("/join")}/>
+        <Button className={`${styles.joinBtn} ${styles.outNav}`} text="Join" onClick={() => navigate("/join")} />
       </div>
     </div>
   );

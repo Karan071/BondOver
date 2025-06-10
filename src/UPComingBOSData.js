@@ -1,60 +1,38 @@
-import img from './assets/TempPhoto.png';
+import useListing from "./Hooks/useListing";
+import img from "./assets/TempPhoto.png";
 
-export default [
-  {
-    id: 1,
-    image: img,
-    title: 'Gully Cricket Championship Delhi Edition',
-    ageGroup: '14–25',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-  },
-  {
-    id: 2,
-    image: img,
-    title: 'Gully Cricket Championship Delhi Edition',
-    ageGroup: '14–25',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-  },
-  {
-    id: 3,
-    image: img,
-    title: 'Gully Cricket Championship Delhi Edition',
-    ageGroup: '14–25',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-  },
-  {
-    id: 4,
-    image: img,
-    title: 'Gully Cricket Championship Delhi Edition',
-    ageGroup: '14–25',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-  },
-  {
-    id: 5,
-    image:img,
-    title: 'Gully Cricket Championship Delhi Edition',
-    ageGroup: '14–25',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-  },
-  {
-    id: 6,
-    image: img,
-    title: 'Gully Cricket Championship Delhi Edition',
-    ageGroup: '14–25',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-  },
-  {
-    id: 7,
-    image: img,
-    title: 'Gully Cricket Championship Delhi Edition',
-    ageGroup: '14–25',
-    location: 'Gandhi Maidan, Patna',
-    date: '25th June 2025 | 8 AM – 5 PM',
-  }
-];
+const API_BASE = "http://154.26.130.161/hswf/api/event/listing";
+
+export default function useUPComingBOSData() {
+  const { data, loading, error } = useListing();
+
+
+  const eventList = Array.isArray(data?.data) ? data.data : [];
+
+  const mappedData = eventList.map((item, idx) => ({
+    id: item.id || idx,
+    image: item.event_banner
+      ? API_BASE + item.event_banner.replace(/^public\//, "")
+      : img,
+    title: item.name || item.title,
+    ageGroup: item.category_data?.title || "",
+    location: item.venue_name || "",
+    date: item.start_date
+      ? formatEventDate(item.start_date, item.end_date)
+      : "",
+    description: item.description || "",
+  }));
+
+  return { data: mappedData, loading, error };
+}
+
+// Helper to format date range
+function formatEventDate(start, end) {
+  const opts = { year: "numeric", month: "short", day: "numeric" };
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  return `${startDate.toLocaleDateString(
+    "en-GB",
+    opts
+  )} – ${endDate.toLocaleDateString("en-GB", opts)}`;
+}
