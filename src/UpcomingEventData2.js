@@ -1,7 +1,7 @@
 import useListing from "./Hooks/useListing";
 import img from "./assets/TempPhoto.png";
 
-const API_BASE = "http://154.26.130.161/hswf/api/event/listing";
+const API_BASE = "http://154.26.130.161/hswf/";
 
 export default function useUpcomingEventData2() {
   const { data, loading, error } = useListing();
@@ -12,7 +12,7 @@ export default function useUpcomingEventData2() {
   const mappedData = eventList.map((item, idx) => ({
     id: item.id || idx,
     image: item.event_banner
-      ? API_BASE + item.event_banner.replace(/^public\//, "")
+      ? API_BASE + item.event_banner
       : img,
     label: "Bond Over Sports",
     title: item.name || item.title,
@@ -25,7 +25,6 @@ export default function useUpcomingEventData2() {
 
   return { data: mappedData, loading, error };
 }
-
 
 
 function formatEventDate(start, end) {
