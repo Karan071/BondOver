@@ -1,0 +1,76 @@
+.thankyou-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.thankyou-content {
+  width: 420px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  position: relative;
+  text-align: center;
+}
+
+.thankyou-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.thankyou-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.thankyou-underline {
+  width: 180px;
+  height: 4px;
+  margin: 12px auto 24px;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  border: none;
+  border-radius: 2px;
+  display: block;
+}
+
+.thankyou-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.thankyou-message {
+  margin: 16px 0 24px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.thankyou-ok {
+  padding: 10px 0;
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff003c, #00e6ff);
+  cursor: pointer;
+}
+
+.thankyou-ok:hover {
+  opacity: 0.9;
+}
