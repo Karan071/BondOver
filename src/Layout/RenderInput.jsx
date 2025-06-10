@@ -14,7 +14,7 @@ export default function RenderInput({
   className = ""
 }) {
   return (
-    <div className={`relative w-full max-w-[1072px] mx-auto mb-5 ${className}`}>
+    <div className={`relative w-full mx-auto mb-5 ${className}`}>
       {/* Floating Label */}
       <label
         htmlFor={name}

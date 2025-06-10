@@ -1,5 +1,4 @@
 .section-inner {
-  max-width: 800px;
   margin: 0 auto;
   padding: 32px;
   background: #fff;
@@ -81,7 +80,7 @@
   border: 1px solid #eee;
   border-radius: 6px;
   margin-bottom: 24px;
-  font-size: 14px;
+  font-size: 24px;
   margin-top: 20px;
   display: flex;
   justify-content: start;
@@ -143,6 +142,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-direction: row;
 }
 
 .genderLabel {
@@ -153,8 +153,9 @@
 
 .genderOptions {
   display: flex;
-  gap: 12px;
+  gap: 24px;
   align-items: center;
+  flex-direction: row;
 }
 
 .genderOptions .sts-btn {
@@ -174,4 +175,25 @@
   .divideSection {
     grid-template-columns: 1fr;
   }
+}
+.gradientButton{
+  padding: 16px 48px;
+  font-size: 28px;
+  font-weight: 500;
+}
+.sponsor-container{
+  max-width: fit-content;
+}
+.sts{
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+.sts img{
+  height: 60px;
+  width: auto;
+}
+.sts-selected{
+  color: red;
+  background-color: transparent;
 }

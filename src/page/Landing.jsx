@@ -7,7 +7,7 @@ import BOSE from "../Sections/UpcomingBOS2/UpcomingEventsection2.jsx";
 import BOSdata from "../UPComingBOSData.js";
 import BOSdataE from "../UpcomingEventData2.js";
 import Movement from "../Sections/MomentumSection/JoinMovement.jsx";
-// import SponserSection from "../Sections/SuponseerSection/Suponsers.jsx";
+import SponserSection from "../Sections/SuponseerSection/Suponsers.jsx";
 import WhySponcerSection from "../Sections/WhySponser/WhySponser.jsx";
 import PatnerSection from "../Sections/PatnersSection/Patners.jsx";
 import InstaTrackSection from "../Sections/InstaTrackSection/InstaTrack.jsx";
@@ -33,7 +33,7 @@ const Landing = () => {
                     <div className="outter">{BosDataE}</div>
                 </section>
                 <Movement />
-                {/* <SponserSection /> */}
+                <SponserSection />
                 <WhySponcerSection />
                 <PatnerSection />
                 <InstaTrackSection />

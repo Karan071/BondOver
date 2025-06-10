@@ -13,6 +13,13 @@ import SupporterIcon from "../../assets/Movement/JoinFormIcon/Supporter.png";
 import Target from "../../assets/logos/Target.png"
 import wa from "../../assets/logos/w1.png"
 
+import men from '../../assets/Icon/men.png';
+import female from '../../assets/Icon/woman.png';
+import other from '../../assets/Icon/other.png';
+import menR from '../../assets/Icon/menR.png';
+import femaleR from '../../assets/Icon/womanR.png';
+import otherR from '../../assets/Icon/otherR.png';
+
 
 import "./Join.css";
 
@@ -120,6 +127,7 @@ export default function Join() {
             type="button"
             disabled={!/^\d{10}$/.test(mobileNumber)}
             onClick={handleGenerateOTP}
+            inpclass="gradientButton"
           >
             Generate OTP
           </GradientButton>
@@ -142,6 +150,18 @@ export default function Join() {
   );
 }
 
+
+const genderImages = {
+  male: men,
+  female: female,
+  other: other,
+};
+
+const genderImagesSelected = {
+  male: menR,
+  female: femaleR,
+  other: otherR,
+};
 
 function JoinForm({
   form,
@@ -173,23 +193,23 @@ function JoinForm({
                   Gender <span className="redStar">*</span>
                 </span>
               </div>
-              <div>
+            
                 <div className="genderOptions">
                   {["male", "female", "other"].map((g) => (
                     <button
                       key={g}
                       type="button"
-                      className={`sts-btn ${form.gender === g ? "sts-btn--selected" : ""}`}
+                      className={`sts `}
                       onClick={setGender(g)}
                     >
-                      <img src={`/icons/${g}.svg`} alt={g} className="sts-btn__icon-img" />
-                      <span className="sts-btn__label">
+                      <img src={`${form.gender === g ? genderImagesSelected[g] : genderImages[g] }`} alt={g} className="sts-btn__icon-img" />
+                      <span className={`sts-btn__label ${form.gender === g ? "sts-selected" : ""}`}>
                         {g[0].toUpperCase() + g.slice(1)}
                       </span>
                     </button>
                   ))}
                 </div>
-              </div>
+      
             </div>
           </div>
         </div>
@@ -249,7 +269,7 @@ function JoinForm({
         <div className="wrapBtn">
           <button
             type="submit"
-            className="gbtn SubmitBtn"
+            className="button gbtn SubmitBtn"
             disabled={loading}
           >
             {loading ? "Submitting…" : "Register Now"}
