@@ -4,6 +4,7 @@ import Footer from "../../Layout/footer/Footer";
 import RenderInput from "../../Layout/RenderInput";
 import Button from "../../Components/button";
 import styles from "./PartnerInterest.module.css";
+import GradientButton from "../../Components/GradientButton";
 
 import schoolCollegeIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/School.png";
 import corporateBrandIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/Bag.png";
@@ -42,7 +43,9 @@ export default function PartnerInterest() {
         <Navbar />
       </div>
       <PartnerBond />
+       <RegisterForEvent />
       <FormBody />
+        
       <Footer />
     </div>
   );
@@ -62,7 +65,59 @@ function PartnerBond() {
     </section>
   );
 }
+function RegisterForEvent() {
+  const [mobileNumber, setMobileNumber] = useState("");
 
+  const handleMobileChange = (e) => {
+    const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setMobileNumber(onlyDigits);
+  };
+
+  const handleGenerateOTP = () => {
+    console.log("Generate OTP for", mobileNumber);
+    // TODO: hook in your OTP logic here
+  };
+
+  return (
+    <section className="sponsor-container">
+      <h1 className="sponsor-title text-left">Register For Event</h1>
+
+      <div className="section">
+        <p className="section-header text-left">
+          Please enter a 10-digit valid mobile number to receive OTP
+        </p>
+        <div className="mobile-input__wrapper">
+          <label htmlFor="mobileNumber" className="mobile-input__label">
+            Mobile Number <span>*</span>
+          </label>
+          <div className="mobile-input__group">
+            <span className="mobile-input__country">+91</span>
+            <input
+              id="mobileNumber"
+              type="tel"
+              maxLength={10}
+              placeholder="Enter Mobile Number"
+              value={mobileNumber}
+              onChange={handleMobileChange}
+              className="mobile-input__field"
+            />
+          </div>
+        </div>
+      </div>
+
+        <div className="wrapBtn mobileMargin">
+                <GradientButton
+                  type="button"
+                  disabled={!/^\d{10}$/.test(mobileNumber)}
+                  onClick={handleGenerateOTP}
+                >
+                  Generate OTP
+                </GradientButton>
+              </div>
+    </section>
+  );
+}
+  
 function FormBody() {
   const [organizationName, setOrganizationName] = useState("");
   const [name, setName] = useState("");
