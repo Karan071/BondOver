@@ -1,8 +1,10 @@
 import styles from './UpcomingEvents.module.css';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import calendarIcon from '../../assets/Icon/calenderIcon.png';
+import { useNavigate } from 'react-router-dom';
 
 const EventCard = ({ image, title, ageGroup, location, date }) => {
+  const navigate = useNavigate();
   return (
     <div>
     <div className={`${styles.card} cardBackground`}>
@@ -18,7 +20,7 @@ const EventCard = ({ image, title, ageGroup, location, date }) => {
       <img src={calendarIcon} alt="calendar" className={styles.dateIm}/>
       {date}
       </p>
-        <button className={styles.but}>Register Now</button>
+        <button className={styles.but} onClick={() => navigate("/register")}>Register Now</button>
       </div>
     </div>
     </div>

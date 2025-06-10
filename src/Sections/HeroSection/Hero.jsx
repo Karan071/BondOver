@@ -7,6 +7,7 @@ import Navbar from '../../Layout/Navbar.jsx';
 import { useNavigate } from 'react-router-dom';
 
 function Hero () {
+  const navigate = useNavigate();
   return (
     <section className={styles.hero} style={{ backgroundImage: `url(${stadiumImg})` }}>
       <div className={styles.overlay}>
