@@ -191,3 +191,9 @@
 .logo {
   width: clamp(100px, 10vw, 163px);
 }
+
+.btn-verify{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
