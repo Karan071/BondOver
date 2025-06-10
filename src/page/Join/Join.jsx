@@ -11,6 +11,8 @@ import OrganizerIcon from "../../assets/Movement/JoinFormIcon/Organizer.png";
 import ContentIcon from "../../assets/Movement/JoinFormIcon/Content.png";
 import SupporterIcon from "../../assets/Movement/JoinFormIcon/Supporter.png";
 import Target from "../../assets/logos/Target.png"
+import wa from "../../assets/logos/w1.png"
+
 
 import "./Join.css";
 
@@ -240,7 +242,7 @@ function JoinForm({
         </div>
 
         <div className="note">
-          <img src={Target} alt="target" className="logo" /> Confirmation and event kit details will be shared via
+          <img src={wa} alt="target" className="logo" /> Confirmation and event kit details will be shared via
           email/WhatsApp
         </div>
 
@@ -252,6 +254,10 @@ function JoinForm({
           >
             {loading ? "Submitting…" : "Register Now"}
           </button>
+        </div>
+
+        <div className="note">
+          <img src={Target} alt="target" className="logo" /> Don’t miss your chance to be part of something bigger than the game.
         </div>
 
         {success && (
