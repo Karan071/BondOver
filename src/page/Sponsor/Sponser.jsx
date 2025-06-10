@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react"; 
 import styles from "./Sponser.module.css";
 import SponsorForm from "./SponsorForm.jsx";
+import GradientButton from "../../Components/GradientButton.jsx";
 import Navbar from "../../Layout/Navbar";
 import Sponsorships from "./Sponsership.jsx";
 import LogoCard from "./LogoCard/LogoCard.jsx";
@@ -41,6 +42,59 @@ const partners = [
       "Your brand will feature in reels, stories, posters, kits, and campaigns with long shelf life and high shareability.",
   },
 ];
+function RegisterForEvent() {
+  const [mobileNumber, setMobileNumber] = useState("");
+
+  const handleMobileChange = (e) => {
+    const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setMobileNumber(onlyDigits);
+  };
+
+  const handleGenerateOTP = () => {
+    console.log("Generate OTP for", mobileNumber);
+   
+  };
+
+  return (
+    <section className="sponsor-container">
+      <h1 className="sponsor-title text-left">Register For Event</h1>
+
+      <div className="section">
+        <p className="section-header text-left">
+          Please enter a 10-digit valid mobile number to receive OTP
+        </p>
+        <div className="mobile-input__wrapper">
+          <label htmlFor="mobileNumber" className="mobile-input__label">
+            Mobile Number <span>*</span>
+          </label>
+          <div className="mobile-input__group">
+            <span className="mobile-input__country">+91</span>
+            <input
+              id="mobileNumber"
+              type="tel"
+              maxLength={10}
+              placeholder="Enter Mobile Number"
+              value={mobileNumber}
+              onChange={handleMobileChange}
+              className="mobile-input__field"
+            />
+          </div>
+        </div>
+      </div>
+
+        <div className="wrapBtn mobileMargin">
+                <GradientButton
+                  type="button"
+                  disabled={!/^\d{10}$/.test(mobileNumber)}
+                  onClick={handleGenerateOTP}
+                >
+                  Generate OTP
+                </GradientButton>
+              </div>
+    </section>
+  );
+}
+  
 
 const Sponser = () => {
   return (
@@ -62,6 +116,7 @@ const Sponser = () => {
           </p>
         </div>
       </section>
+         <RegisterForEvent />
       <section className={styles.section}>
         <h2 className={styles.h2}>Why Sponsor BOS?</h2>
 
@@ -80,11 +135,15 @@ const Sponser = () => {
         </div>
       </section>
       <Sponsorships />
+    
+
       <SponsorForm />
+      
       <LogoCard />
       <LetsTalk />
       <Footer />
     </div>
+    
   );
 };
 
