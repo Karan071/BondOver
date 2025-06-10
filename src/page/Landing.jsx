@@ -15,7 +15,6 @@ import CommunityTalksSection from "../Sections/ComunityTalk/ComunityTalk.jsx";
 import StayConnectedSection from "../Sections/StayConnected/StayConnected.jsx";
 import WellfareSection from "../Sections/WellfareSection/Wellfare.jsx";
 import Footer from "../Layout/footer/Footer.jsx";
-import ThankYou from "../Components/NotificationCard/ThankYou.jsx";
 
 const Landing = () => {
     const BosData = BOSdata.map((data) => <BOS key={data.id} {...data} />);
@@ -42,7 +41,6 @@ const Landing = () => {
                 <StayConnectedSection />
                 <WellfareSection />
                 <Footer />
-                <ThankYou/>
             </>
         </div>
     );
