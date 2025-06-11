@@ -96,43 +96,11 @@ export default function Join() {
         <WhatYouGet />
       </section>
 
-      <section className="sponsor-container upperSponsor">
-        <h1 className="sponsor-title text-left">Register For Event</h1>
-
-        <div className="section">
-          <p className="section-header text-left">
-            Please enter a 10-digit valid mobile number to receive OTP
-          </p>
-          <div className="mobile-input__wrapper">
-            <label htmlFor="mobileNumber" className="mobile-input__label">
-              Mobile Number <span>*</span>
-            </label>
-            <div className="mobile-input__group">
-              <span className="mobile-input__country">+91</span>
-              <input
-                id="mobileNumber"
-                type="tel"
-                maxLength={10}
-                placeholder="Enter Mobile Number"
-                value={mobileNumber}
-                onChange={handleMobileChange}
-                className="mobile-input__field"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="wrapBtn mobileMargin">
-          <GradientButton
-            type="button"
-            disabled={!/^\d{10}$/.test(mobileNumber)}
-            onClick={handleGenerateOTP}
-            inpclass="gradientButton"
-          >
-            Generate OTP
-          </GradientButton>
-        </div>
-      </section>
+      <OTP
+        mobileNumber={mobileNumber}
+        handleMobileChange={handleMobileChange}
+        handleGenerateOTP={handleGenerateOTP}
+      />
 
       <JoinForm
         form={form}
@@ -193,23 +161,23 @@ function JoinForm({
                   Gender <span className="redStar">*</span>
                 </span>
               </div>
-            
-                <div className="genderOptions">
-                  {["male", "female", "other"].map((g) => (
-                    <button
-                      key={g}
-                      type="button"
-                      className={`sts `}
-                      onClick={setGender(g)}
-                    >
-                      <img src={`${form.gender === g ? genderImagesSelected[g] : genderImages[g] }`} alt={g} className="sts-btn__icon-img" />
-                      <span className={`sts-btn__label ${form.gender === g ? "sts-selected" : ""}`}>
-                        {g[0].toUpperCase() + g.slice(1)}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-      
+
+              <div className="genderOptions">
+                {["male", "female", "other"].map((g) => (
+                  <button
+                    key={g}
+                    type="button"
+                    className={`sts `}
+                    onClick={setGender(g)}
+                  >
+                    <img src={`${form.gender === g ? genderImagesSelected[g] : genderImages[g]}`} alt={g} className="sts-btn__icon-img" />
+                    <span className={`sts-btn__label ${form.gender === g ? "sts-selected" : ""}`}>
+                      {g[0].toUpperCase() + g.slice(1)}
+                    </span>
+                  </button>
+                ))}
+              </div>
+
             </div>
           </div>
         </div>
@@ -285,6 +253,47 @@ function JoinForm({
         )}
         {error && <p className="error-message">{error}</p>}
       </form>
+    </section>
+  );
+}
+
+
+function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP }) {
+  return (
+    <section className="sponsor-container upperSponsor">
+      <h1 className="sponsor-title text-left">Register For Event</h1>
+      <div className="section">
+        <p className="section-header text-left">
+          Please enter a 10-digit valid mobile number to receive OTP
+        </p>
+        <div className="mobile-input__wrapper">
+          <label htmlFor="mobileNumber" className="mobile-input__label">
+            Mobile Number <span>*</span>
+          </label>
+          <div className="mobile-input__group">
+            <span className="mobile-input__country">+91</span>
+            <input
+              id="mobileNumber"
+              type="tel"
+              maxLength={10}
+              placeholder="Enter Mobile Number"
+              value={mobileNumber}
+              onChange={handleMobileChange}
+              className="mobile-input__field"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="wrapBtn mobileMargin">
+        <GradientButton
+          type="button"
+          disabled={!/^\d{10}$/.test(mobileNumber)}
+          onClick={handleGenerateOTP}
+          inpclass="gradientButton"
+        >
+          Generate OTP
+        </GradientButton>
+      </div>
     </section>
   );
 }
