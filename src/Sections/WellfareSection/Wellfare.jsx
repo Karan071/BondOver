@@ -2,12 +2,13 @@
 import styles from './HswfSection.module.css';
 import logo from '../../assets/logos/WellfareLogo.png'; // Add your image here
 import Button from '../../Components/button.jsx';
+import { Link } from 'react-router-dom';
 
 const HswfSection = () => {
   return (
     <section className={styles.section} id='network'>
       <h3 className={styles.h3}>Brought to You by</h3>
-      <h2  className={styles.h2}>Hardcore Sports Welfare Foundation</h2>
+      <h2 className={styles.h2}>Hardcore Sports Welfare Foundation</h2>
 
       <p className={styles.desc}>
         Hardcore Sports Welfare Foundation <span className={styles.highlight}>(HSWF.Network)</span> is a not-for-profit initiative committed to making sports more accessible, inclusive, and impactful across India.
@@ -25,7 +26,7 @@ const HswfSection = () => {
 
       <div className={styles.footer}>
         <div>
-        <img src={logo} alt="HSWF Logo" className={styles.logo} />
+          <img src={logo} alt="HSWF Logo" className={styles.logo} />
         </div>
         <div className={styles.legal}>
           <h4>Legal & Registration Details</h4>
@@ -35,7 +36,9 @@ const HswfSection = () => {
           <p><strong>Niti Aayog</strong> – DL/2022/0332632</p>
         </div>
         <div>
-          <Button className={styles.but} text="Visit HSWF.Network" />
+          <Link to="https://hswf.network/" target="_blank">
+            <Button className={styles.but} text="Visit HSWF.Network" />
+          </Link>
         </div>
       </div>
     </section>

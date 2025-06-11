@@ -2,6 +2,7 @@ import styles from './InstaFastTrack.module.css';
 import videoData from './videoData.js';
 import logo from '../../assets/Icon/InstaIcon.png';
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const placeholderVideos = Array(6).fill('https://via.placeholder.com/180x320.png?text=9:16+Video');
 
@@ -34,9 +35,11 @@ const InstaFastTrack = () => {
             Catch bite-sized moments of joy, grit, and heritage from kabaddi dives to victory dances.
             Fast fun and full of heart watch and share the spirit of BOS anytime anywhere.
           </p>
-          <button className={styles.followBtn}>
-            <img src={logo} alt="Instagram" /> Follow Us
-          </button>
+          <Link to="https://www.instagram.com/hswf.network/#" target="_blank">
+            <button className={styles.followBtn}>
+              <img src={logo} alt="Instagram" /> Follow Us
+            </button>
+            </Link>
         </div>
       </div>
 
