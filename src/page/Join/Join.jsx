@@ -4,7 +4,6 @@ import Footer from "../../Layout/footer/Footer";
 import WhatYouGet from "../../Components/WhatYouGet";
 import RenderInput from "../../Layout/RenderInput";
 import GradientButton from "../../Components/GradientButton";
-
 import PlayerIcon from "../../assets/Movement/JoinFormIcon/Player.png";
 import VolunteerIcon from "../../assets/Movement/JoinFormIcon/Volunteer.png";
 import OrganizerIcon from "../../assets/Movement/JoinFormIcon/Organizer.png";
@@ -20,6 +19,9 @@ import menR from '../../assets/Icon/menR.png';
 import femaleR from '../../assets/Icon/womanR.png';
 import otherR from '../../assets/Icon/otherR.png';
 
+import VerificationCode from "../../Components/NotificationCard/VerificationCode";
+import ThankYou from "../../Components/NotificationCard/ThankYou";
+import useOtp from "../../Hooks/useOtp";
 
 import "./Join.css";
 
@@ -33,7 +35,10 @@ const JOIN_AS_OPTIONS = [
 
 export default function Join() {
   const [mobileNumber, setMobileNumber] = useState("");
-  const handleMobileChange = (e) => setMobileNumber(e.target.value);
+  const [showVerify, setShowVerify] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+
+  const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
 
   const [form, setForm] = useState({
     name: "",
@@ -45,7 +50,7 @@ export default function Join() {
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
+  const [formError, setFormError] = useState("");
 
   const handleChange = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -54,21 +59,32 @@ export default function Join() {
   const setJoinAs = (j) => () =>
     setForm((f) => ({ ...f, joinAs: j }));
 
-  const handleGenerateOTP = () => {
-    // TODO: call your OTP API
-    console.log("Generate OTP for", mobileNumber);
+  const handleSendOtp = async () => {
+    const sent = await sendOtp(mobileNumber);
+    if (sent) setShowVerify(true);
+  };
+
+  const handleVerify = async (otp) => {
+    await verifyOtp(mobileNumber, otp);
+  };
+
+  const handleChangeNumber = () => {
+    reset();
+    setShowVerify(false);
+    setShowThankYou(false);
+    setMobileNumber("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setFormError("");
     try {
-      // TODO: submit `form`
-      console.log("Submitting details", form);
+      // TODO: submit `form` to your backend
       setSuccess(true);
+      setShowThankYou(true);
     } catch {
-      setError("Failed to submit. Please try again.");
+      setFormError("Failed to submit. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -79,40 +95,47 @@ export default function Join() {
       <div className="navWrapper">
         <Navbar />
       </div>
+      <Information />
+      {!otpSent && (
+        <>
+          <OTP
+            mobileNumber={mobileNumber}
+            handleMobileChange={e => setMobileNumber(e.target.value)}
+            handleGenerateOTP={handleSendOtp}
+          />
+          {/* {(error && !otpSent) && <div className="error-message">{error}</div>} */}
+        </>
+      )}
 
-      <section className="heroSection">
-        <div className="container">
-          <h1 className="heroTitle">Join the Movement</h1>
-          <h2 className="heroSubtitle">
-            Be more than just a spectator — be the spirit of the game.
-          </h2>
-          <p className="heroText">
-            Join hundreds of passionate individuals coming together to celebrate
-            heritage, sportsmanship, and community pride. Whether you're
-            playing, volunteering, organizing, or just capturing the moments —
-            you matter.
-          </p>
+      {/* Show VerificationCode if OTP sent and not yet verified */}
+      {otpSent && !verified && (
+        <div className="verification-modal-overlay">
+          <VerificationCode
+            phoneNumber={`+91 ${mobileNumber}`}
+            onVerify={handleVerify}
+            onResend={() => sendOtp(mobileNumber)}
+            onChangeNumber={handleChangeNumber}
+          />
         </div>
-        <WhatYouGet />
-      </section>
+      )}
 
-      <OTP
-        mobileNumber={mobileNumber}
-        handleMobileChange={handleMobileChange}
-        handleGenerateOTP={handleGenerateOTP}
-      />
+      {/* Show JoinForm if verified */}
+      {verified && !showThankYou && (
+        <JoinForm
+          form={form}
+          handleChange={handleChange}
+          setGender={setGender}
+          setJoinAs={setJoinAs}
+          loading={loading}
+          success={success}
+          error={formError}
+          handleSubmit={handleSubmit}
+        />
+      )}
 
-      <JoinForm
-        form={form}
-        handleChange={handleChange}
-        setGender={setGender}
-        setJoinAs={setJoinAs}
-        loading={loading}
-        success={success}
-        error={error}
-        handleSubmit={handleSubmit}
-      />
-
+      {showThankYou && (
+        <ThankYou onClose={handleChangeNumber} />
+      )}
       <Footer />
     </>
   );
@@ -131,16 +154,7 @@ const genderImagesSelected = {
   other: otherR,
 };
 
-function JoinForm({
-  form,
-  handleChange,
-  setGender,
-  setJoinAs,
-  loading,
-  success,
-  error,
-  handleSubmit,
-}) {
+function JoinForm({ form, handleChange, setGender, setJoinAs, loading, success, error, handleSubmit }) {
   return (
     <section className="sponsor-container">
       <h1 className="sponsor-title text-left">Fill in your details</h1>
@@ -257,7 +271,6 @@ function JoinForm({
   );
 }
 
-
 function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP }) {
   return (
     <section className="sponsor-container upperSponsor">
@@ -273,6 +286,7 @@ function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP }) {
           <div className="mobile-input__group">
             <span className="mobile-input__country">+91</span>
             <input
+              required
               id="mobileNumber"
               type="tel"
               maxLength={10}
@@ -294,6 +308,27 @@ function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP }) {
           Generate OTP
         </GradientButton>
       </div>
+    </section>
+  );
+}
+
+// static card for the information section
+function Information() {
+  return (
+    <section className="heroSection">
+      <div className="container">
+        <h1 className="heroTitle">Join the Movement</h1>
+        <h2 className="heroSubtitle">
+          Be more than just a spectator — be the spirit of the game.
+        </h2>
+        <p className="heroText">
+          Join hundreds of passionate individuals coming together to celebrate
+          heritage, sportsmanship, and community pride. Whether you're
+          playing, volunteering, organizing, or just capturing the moments —
+          you matter.
+        </p>
+      </div>
+      <WhatYouGet />
     </section>
   );
 }
