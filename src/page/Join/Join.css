@@ -253,3 +253,36 @@
 .SubmitBtn{
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
+
+.error-message{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #e60023;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 8px;
+}
+
+.verification-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.verification-modal {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  min-width: 320px;
+  max-width: 90vw;
+}

@@ -15,6 +15,7 @@ import CommunityTalksSection from "../Sections/ComunityTalk/ComunityTalk.jsx";
 import StayConnectedSection from "../Sections/StayConnected/StayConnected.jsx";
 import WellfareSection from "../Sections/WellfareSection/Wellfare.jsx";
 import Footer from "../Layout/footer/Footer.jsx";
+import VerificationCode from "../Components/NotificationCard/VerificationCode.jsx";
 
 const Landing = () => {
     const { data: BOSdata, loading, error } = useUPComingBOSData();
@@ -53,6 +54,7 @@ const Landing = () => {
                 <StayConnectedSection />
                 <WellfareSection />
                 <Footer />
+                <VerificationCode/>
             </>
         </div>
     );

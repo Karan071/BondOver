@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './VerificationCode.css';
 import GradientButton from '../GradientButton';
 
-const VerificationCode = ({ phoneNumber = '+91 9729680598', onVerify, onResend, onChangeNumber }) => {
-    const [code, setCode] = useState(Array(6).fill(''));
+const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) => {
+    const [code, setCode] = useState(Array(4).fill(''));
 
     const handleChange = (e, idx) => {
         const val = e.target.value.replace(/[^0-9]/g, '');

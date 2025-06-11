@@ -1,14 +1,37 @@
 import { useState } from "react";
-import Navbar from "../../Layout/Navbar"
+import Navbar from "../../Layout/Navbar";
 import "./Register.css";
 import WhatYouGet from "../../Components/WhatYouGet";
-import GradientButton from "../../Components/GradientButton"; 
+import GradientButton from "../../Components/GradientButton";
 import Footer from "../../Layout/footer/Footer.jsx";
+import VerificationCode from "../../Components/NotificationCard/VerificationCode";
+import ThankYou from "../../Components/NotificationCard/ThankYou";
+import useOtp from "../../Hooks/useOtp";
+
 
 export default function Register() {
-
   const [mobileNumber, setMobileNumber] = useState("");
-  const handleMobileNumberChange = (e) => setMobileNumber(e.target.value);
+  const [showVerify, setShowVerify] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+
+  const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
+
+  const handleSendOtp = async () => {
+    await sendOtp(mobileNumber);
+    setShowVerify(true);
+  };
+
+  const handleVerify = async (otp) => {
+    await verifyOtp(mobileNumber, otp);
+    if (!error && !verifying) setShowThankYou(true);
+  };
+
+  const handleChangeNumber = () => {
+    reset();
+    setShowVerify(false);
+    setShowThankYou(false);
+    setMobileNumber("");
+  };
 
   return (
     <div>
@@ -34,42 +57,60 @@ export default function Register() {
         <WhatYouGet />
       </section>
 
-      <div className="sponsor-container">
-        <h1 className="sponsor-title text-left">Register For Event</h1>
-
-        <div className="section">
-          <p className="section-header text-left">
-            Please enter a 10-digit valid mobile number to receive OTP
-          </p>
-
-          <div className="mobile-input__wrapper">
-            <label htmlFor="mobileNumber" className="mobile-input__label">
-              Mobile Number <span>*</span>
-            </label>
-
-            <div className="mobile-input__group">
-              <span className="mobile-input__country">+91</span>
-              <input
-                id="mobileNumber"
-                name="mobileNumber"
-                type="text"
-                value={mobileNumber}
-                onChange={handleMobileNumberChange}
-                placeholder="Enter Mobile Number"
-                className="mobile-input__field"
-              />
+      {!otpSent && !showVerify && (
+        <div className="sponsor-container">
+          <h1 className="sponsor-title text-left">Register For Event</h1>
+          <div className="section">
+            <p className="section-header text-left">
+              Please enter a 10-digit valid mobile number to receive OTP
+            </p>
+            <div className="mobile-input__wrapper">
+              <label htmlFor="mobileNumber" className="mobile-input__label">
+                Mobile Number <span>*</span>
+              </label>
+              <div className="mobile-input__group">
+                <span className="mobile-input__country">+91</span>
+                <input
+                  id="mobileNumber"
+                  name="mobileNumber"
+                  type="text"
+                  value={mobileNumber}
+                  onChange={e => setMobileNumber(e.target.value)}
+                  placeholder="Enter Mobile Number"
+                  className="mobile-input__field"
+                  maxLength={10}
+                />
+              </div>
             </div>
           </div>
+          <div className="wrapBtn mobileMargin">
+            <GradientButton
+              type="button"
+              className="gbtn SubmitBtn"
+              disabled={!/^\d{10}$/.test(mobileNumber)}
+              onClick={handleSendOtp}
+            >
+              Generate OTP
+            </GradientButton>
+          </div>
+          {error && <p className="error-message">{error}</p>}
         </div>
+      )}
 
-        <div className="wrapBtn mobileMargin">
-          <GradientButton type="button" className="gbtn SubmitBtn">
-            Generate OTP 
-          </GradientButton>
-        </div>
-      
-      </div>
-        <Footer/>
+      {otpSent && showVerify && !verified && (
+        <VerificationCode
+          phoneNumber={`+91 ${mobileNumber}`}
+          onVerify={handleVerify}
+          onResend={() => sendOtp(mobileNumber)}
+          onChangeNumber={handleChangeNumber}
+        />
+      )}
+
+      {verified && showThankYou && (
+        <ThankYou onClose={handleChangeNumber} />
+      )}
+
+      <Footer />
     </div>
   );
 }
