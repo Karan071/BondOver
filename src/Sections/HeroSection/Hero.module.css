@@ -11,7 +11,7 @@
 .overlay {
   background: linear-gradient(to bottom right, rgb(0,0,0,0.6), transparent);
   height: 100%;
-  padding: clamp(16px, 2vw, 16px) clamp(32px, 10vw, 216px) clamp(32px, 20vw, 196px) clamp(40px, 15vw, 196px);
+  padding: clamp(16px, 2vw, 16px) clamp(16px, 10vw, 216px) clamp(16px, 20vw, 196px) clamp(40px, 15vw, 196px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

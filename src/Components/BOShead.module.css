@@ -1,8 +1,8 @@
 .bosWrapper {
   display: flex;
   justify-content: center;
-  padding: 0 clamp(16px, 0.5vw, 216px);
-  padding-top: clamp(40px,5vw,96px);
+  padding: 0 216px;
+  padding-top: 96px;
   background-color: #fefefe;
 }
 
@@ -41,4 +41,20 @@
   color: #444;
   line-height: 1.75;
   margin-top: 1rem;
+}
+
+@media (max-width:1300px) {
+  .bosWrapper{
+    padding: 0 70px;
+  }
+}
+@media (max-width:900px) {
+  .bosWrapper{
+    padding: 0 16px;
+  }
+}
+@media (max-width:500px) {
+  .bosWrapper{
+    padding: 0;
+  }
 }

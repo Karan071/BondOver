@@ -138,6 +138,7 @@
   align-items: center;
   gap: 16px;
   flex-direction: row;
+  padding-left: 16px;
 }
 
 .genderLabel {
@@ -204,6 +205,13 @@
   max-width: 80%;
   }
 }
+@media (max-width: 9500px){
+  .sponsor-container-latter{
+    padding: 16px;
+    padding-top: 40px;
+    padding-top: 40px;
+  }
+}
 @media (max-width: 700px) {
   .divideSection {
     grid-template-columns: 1fr;
@@ -238,11 +246,9 @@
     flex-direction: column;
   }
 }
-@media (max-width: 350px) {
-  .sts img{
+.sts img{
     min-width: 50px !important;
   }
-}
 
 .SubmitBtn{
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;

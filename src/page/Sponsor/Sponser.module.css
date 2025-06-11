@@ -128,16 +128,17 @@
 .grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0;
+  justify-content: center;
+  gap:32px;
   margin-bottom: 32px;
 }
 
 /* ---------------- CARD BASE STYLE ---------------- */
 .card {
-  width: 354px;
-  min-height: 357px; /* increased to accommodate description */
-  padding: 20px 20px 20px;
+  flex: 1 1 calc(25% - 32px);      /* 4 in a row by default */
+  max-width: calc(25% - 32px);
+  min-height: 357px;
+  padding: 20px;
   border: 2px solid transparent;
   border-radius: 16px;
   background: white;
@@ -146,8 +147,8 @@
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
-
 /* Hover effect on each card */
 .card:hover {
   transform: translateY(-4px);
@@ -210,32 +211,34 @@
 .red {
   background: 
     linear-gradient(white, white) padding-box, 
-    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF) border-box;
   border: 2px solid transparent;
 }
 .orange {
   background: 
     linear-gradient(white, white) padding-box, 
-    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF) border-box;
   border: 2px solid transparent;
 }
 .blue {
   background: 
     linear-gradient(white, white) padding-box, 
-    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF) border-box;
   border: 2px solid transparent;
 }
 .purple {
   background: 
     linear-gradient(white, white) padding-box, 
-    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF,#FFFFFF) border-box;
+    linear-gradient(#DF0024, #FC9F0B, #FFCD00,#3BB402,#FFFFFF) border-box;
   border: 2px solid transparent;
 }
 
 /* -------------- RESPONSIVE BREAKPOINTS --------------- */
 
 /* For screens below 1360px */
-@media (max-width: 1360px) {
+
+
+@media (max-width: 1700px) {
   .section {
     padding: 48px 120px;
   }
@@ -249,11 +252,6 @@
     gap: 20px;
   }
 
-  .card {
-    width: 300px;
-        min-height: 330px;
-    padding: 48px 20px 20px;
-  }
 
   .iconBox {
     top: -36px;
@@ -284,15 +282,20 @@
 
 
 }
-
+@media (max-width: 1300px) {
+  .card {
+    flex: 0 1 calc(50% - 50px);
+    max-width: calc(50% - 32px);
+  }
+}
 /* For tablets (up to 1024px) */
 @media (max-width: 1024px) {
   .grid {
     gap: 20px;
   }
   .card {
-    width: 45%; /* two cards per row */
-    min-height: auto;
+    width: 45%;
+    min-height: 250px;
   }
   .section {
     padding: 60px 80px;
@@ -300,7 +303,7 @@
 }
 
 /* Mobile devices (up to 768px) */
-@media (max-width: 768px) {
+@media (max-width: 808px) {
   .section {
     padding: 40px 16px;
   }
@@ -309,15 +312,9 @@
     font-size: 32px;
   }
 
-  .grid {
-    flex-direction: column;
-    gap: 34px;
-  }
-
   .card {
-    width: 100%;
-    padding: 40px 16px 16px;
-    text-align: center;
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
   .iconBox {

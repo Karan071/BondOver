@@ -69,12 +69,10 @@
 }
 @media (max-width: 1360px) {
   .section {
-    padding: 80px 120px; /* reduce horizontal padding */
+    padding: 80px 90px ; /* reduce horizontal padding */
   }
 
   .card {
-    width: 30%;
-    max-width: 300px;
     padding: 28px 20px 56px;
   }
 
@@ -97,7 +95,7 @@
 
 @media (max-width: 1060px) {
   .section {
-    padding: 64px 48px;
+    padding: 64px 32px;
   }
 
   .h2 {

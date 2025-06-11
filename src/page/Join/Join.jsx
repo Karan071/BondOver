@@ -174,7 +174,7 @@ function JoinForm({
   handleSubmit,
 }) {
   return (
-    <section className="sponsor-container">
+    <section className="sponsor-container sponsor-container-latter">
       <h1 className="sponsor-title text-left">Fill in your details</h1>
       <form onSubmit={handleSubmit}>
         <div className="divideSection">

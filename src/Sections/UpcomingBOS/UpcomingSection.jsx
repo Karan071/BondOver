@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const EventCard = ({ image, title, ageGroup, location, date }) => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className={styles.container}>
     <div className={`${styles.card} cardBackground`}>
       <img src={image} alt="event" className={styles.image} />
       <div className={styles.body}>

@@ -16,7 +16,8 @@
 }
 
 .h2 {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(40px, 4vw, 48px);
+  font-weight: bold;
 }
 
 .subtitle {
@@ -94,7 +95,11 @@
   height: 100%;
   object-fit: cover;
 }
-
+@media (max-width:900px){
+  .section{
+    padding-left: 80px;
+  }
+}
 @media (max-width:784px) {
   .followBtn img {
   width: 16px;

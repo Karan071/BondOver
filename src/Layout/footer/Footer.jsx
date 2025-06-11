@@ -39,14 +39,16 @@ const Footer = () => {
         </div>
 
         {/* Address */}
-        <Link to="https://maps.app.goo.gl/5Mbx4aYvQgkt6ay98" target="_blank">
+       
           <div className={`${styles.col} ${styles.col3}`}>
+            <Link to="https://maps.app.goo.gl/5Mbx4aYvQgkt6ay98" target="_blank">
             <p><img src={location} alt="location" className={`${styles.import} ${styles.im3}`} /></p>
             <p className={styles.strong}><strong>Bond Over Sports</strong></p>
             <p>601, Magnus Tower, Sector 73</p>
             <p>Noida, Uttar Pradesh, India 201307</p>
+            </Link>
           </div>
-        </Link>
+        
       </div>
 
       <div className={styles.hr}></div>

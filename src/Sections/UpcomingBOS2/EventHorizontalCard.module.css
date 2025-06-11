@@ -11,11 +11,12 @@
   margin-bottom: 46px;
   box-sizing: border-box;
   border: 2px solid transparent;
+  height: 390px;
 }
 
 .image {
-  width: 393px;
-  height: auto;
+  width: 390px;
+  height: 390px;
   object-fit: cover;
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
@@ -73,6 +74,12 @@
   color: #4b5563;
   margin-top: 2px;
   line-height: 1.5;
+  height: 60px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
 }
 
 .but{
@@ -88,18 +95,20 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .card {
+    width: 500px;
+    height: auto;
     flex-direction: column;
   }
 
   .image {
-    width: 100%;
-    height: 200px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
-    border-radius: 16px 16px 0 0;
+    border-radius: 16px 16px 0 0  ;
   }
-
-  .content {
-    padding:20px;
+  .description{
+    height: 110px;
+  -webkit-line-clamp: 4; 
   }
 }
 @media (max-width: 764px){
@@ -131,5 +140,15 @@
   }
   .but{
     font-size: 16px;
+  }
+  .card{
+    width: 300px;
+  }
+  .image{
+    width: 300px;
+    height: 300px;
+  }
+  .description{
+    -webkit-line-clamp: 5;
   }
 }
