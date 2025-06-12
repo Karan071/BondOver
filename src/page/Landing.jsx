@@ -54,7 +54,7 @@ const Landing = () => {
                 <StayConnectedSection />
                 <WellfareSection />
                 <Footer />
-                <VerificationCode/>
+                {/* <VerificationCode/> */}
             </>
         </div>
     );
