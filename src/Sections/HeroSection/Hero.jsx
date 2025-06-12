@@ -43,10 +43,13 @@ function Hero () {
             </div>
           </div>
           <div className={styles.buttons}>
-            <Button className={styles.primary} text="Join the movement" onClick={() => {}} />
+            <Button className={styles.primary} text="Join the movement" onClick={() => navigate("/join")} />
             <div className={styles.secWrapper}>
               <div className={styles.out}></div>
-              <button className={styles.secondary} onClick={() => {}}>Explore Events</button>
+              <button className={styles.secondary} onClick={() => {
+                  const el = document.getElementById("events");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}>Explore Events</button>
             </div>
           </div>
         </div>
