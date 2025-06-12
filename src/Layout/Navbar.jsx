@@ -30,13 +30,13 @@ function Navbar() {
           </button>
         )}
         <img src={Logo} alt="BOS Logo" className={`${styles.logo} ${styles.inNav}`} />
-        <a href="#about" style={{ color: linkColor }}>ABOUT</a>
-        <a href="#events" style={{ color: linkColor }}>EVENTS</a>
-        <a href="#joinas" style={{ color: linkColor }}>JOIN AS</a>
-        <a href="#sponser" style={{ color: linkColor }}>SPONSERS</a>
-        <a href="#partners" style={{ color: linkColor }}>PARTNERS</a>
-        <a href="#insta" style={{ color: linkColor }}>INSTA TRACK</a>
-        <a href="#network" style={{ color: linkColor }}>HSWF.NETWORK</a>
+        <a href="#about" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>ABOUT</a>
+        <a href="#events" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>EVENTS</a>
+        <a href="#joinas" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>JOIN AS</a>
+        <a href="#sponser" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>SPONSERS</a>
+        <a href="#partners" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>PARTNERS</a>
+        <a href="#insta" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>INSTA TRACK</a>
+        <a href="#network" style={{ color: linkColor }}  onClick={() => setIsMenuOpen(false)}>HSWF.NETWORK</a>
         <Button className={`${styles.joinBtn} ${styles.inNav}`} text="Join" onClick={() => navigate("/join")} />
       </nav>
 
