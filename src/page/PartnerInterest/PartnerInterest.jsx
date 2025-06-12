@@ -37,13 +37,16 @@ const OPTION = [
 ];
 
 export default function PartnerInterest() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <div className={styles.navWrapper}>
         <Navbar />
       </div>
       <PartnerBond />
-       <RegisterForEvent />
+      {/* <RegisterForEvent /> */}
       <FormBody />
         
       <Footer />
@@ -65,6 +68,7 @@ function PartnerBond() {
     </section>
   );
 }
+
 function RegisterForEvent() {
   const [mobileNumber, setMobileNumber] = useState("");
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react";
 import styles from "./Sponser.module.css";
 import SponsorForm from "./SponsorForm.jsx";
 import GradientButton from "../../Components/GradientButton.jsx";
@@ -52,7 +52,7 @@ function RegisterForEvent() {
 
   const handleGenerateOTP = () => {
     console.log("Generate OTP for", mobileNumber);
-   
+
   };
 
   return (
@@ -82,21 +82,25 @@ function RegisterForEvent() {
         </div>
       </div>
 
-        <div className="wrapBtn mobileMargin">
-                <GradientButton
-                  type="button"
-                  disabled={!/^\d{10}$/.test(mobileNumber)}
-                  onClick={handleGenerateOTP}
-                >
-                  Generate OTP
-                </GradientButton>
-              </div>
+      <div className="wrapBtn mobileMargin">
+        <GradientButton
+          type="button"
+          disabled={!/^\d{10}$/.test(mobileNumber)}
+          onClick={handleGenerateOTP}
+        >
+          Generate OTP
+        </GradientButton>
+      </div>
     </section>
   );
 }
-  
+
 
 const Sponser = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.navWrapper}>
@@ -116,7 +120,7 @@ const Sponser = () => {
           </p>
         </div>
       </section>
-         <RegisterForEvent />
+      {/* <RegisterForEvent /> */}
       <section className={styles.section}>
         <h2 className={styles.h2}>Why Sponsor BOS?</h2>
 
@@ -135,15 +139,15 @@ const Sponser = () => {
         </div>
       </section>
       <Sponsorships />
-    
+
 
       <SponsorForm />
-      
+
       <LogoCard />
       <LetsTalk />
       <Footer />
     </div>
-    
+
   );
 };
 
