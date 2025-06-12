@@ -1,5 +1,4 @@
-.card {
-  flex: 0 1 320px; /* Flex-grow: 0, flex-shrink: 1, basis: 320px */
+.card {/* Flex-grow: 0, flex-shrink: 1, basis: 320px */
   max-width: 320px;
   border-radius: 16px;
   background-color: #ffffff;

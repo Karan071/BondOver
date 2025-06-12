@@ -79,7 +79,7 @@ function RegisterForEvent() {
   };
 
   return (
-    <section className="sponsor-container">
+    <section className="sponsor-container margin">
       <h1 className="sponsor-title text-left">Register For Event</h1>
 
       <div className="section">
@@ -311,11 +311,9 @@ function FormBody() {
 
         <div className={styles.section}>
           <h2 className={styles.formSubHeading}>Message / Proposal (Optional)</h2>
-          <p className={styles.smallNote}>
-            Share any brief proposal or interest point
-          </p>
+          
           <RenderInput
-            label="Message"
+            label="Share any brief proposal or interest point"
             name="description"
             type="text"
             placeholder="Write here"

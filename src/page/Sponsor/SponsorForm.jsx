@@ -95,7 +95,7 @@ export default function SponsorForm() {
 
 
   return (
-    <form className="sponsor-container" onSubmit={handleSubmit}>
+    <form className="sponsor-container margin" onSubmit={handleSubmit}>
       <h1 className="sponsor-title text-left">Sponsor Inquiry</h1>
 
 
@@ -183,11 +183,10 @@ export default function SponsorForm() {
         </div>
       </div>
       <div className="section mobileMargin">
-        <p className="section-header text-left">Message / Query</p>
-        <p className="small-note text-left">Share any Sponsor Inquiry</p>
+        <p className="section-header text-left less">Message / Query</p>
 
         <RenderInput
-          label="Message"
+          label="Share any Sponsor Inquirye"
           name="message"
           isTextarea
           placeholder="Write here...."

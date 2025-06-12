@@ -4,10 +4,12 @@ import "./Register.css";
 import WhatYouGet from "../../Components/WhatYouGet";
 import GradientButton from "../../Components/GradientButton";
 import Footer from "../../Layout/footer/Footer.jsx";
-import VerificationCode from "../../Components/NotificationCard/VerificationCode";
-import ThankYou from "../../Components/NotificationCard/ThankYou";
+import VerificationCode from "../../Components/NotificationCard/VerificationCode.jsx";
+import ThankYou from "../../Components/NotificationCard/ThankYou.jsx";
 import useOtp from "../../Hooks/useOtp";
 
+import imge from '../../assets/TempPhoto.png'
+import { DynamicCard } from "../../Components/DynamicCard/DynamicCard.jsx";
 
 export default function Register() {
   const [mobileNumber, setMobileNumber] = useState("");
@@ -57,8 +59,15 @@ export default function Register() {
         <WhatYouGet />
       </section>
 
+
+      
+
+
+
       {!otpSent && !showVerify && (
-        <div className="sponsor-container">
+        <div className="sponsor-container margin">
+          <DynamicCard image={imge} age="14-25" title="Gully Cricket Championship Delhi Edition" location="Gandhi Maidan, Patna" date="June 2025 | 8 AM – 5 PM"/>
+
           <h1 className="sponsor-title text-left">Register For Event</h1>
           <div className="section">
             <p className="section-header text-left">

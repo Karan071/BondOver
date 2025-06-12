@@ -48,7 +48,7 @@ export default function RenderInput({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="w-full h-[68px] bg-[#F8F8F8] px-4 pr-4 border border-[#F8F8F8] rounded-md focus:outline-none text-[#898989] text-[18px] placeholder-[#434343] p-8"
+          className="w-full h-[68px] bg-[#F8F8F8] px-4 pr-4 border border-[#F8F8F8] rounded-md focus:outline-none text-[#898989] text-[20px] placeholder-[#434343] p-8"
         />
       )}
     </div>

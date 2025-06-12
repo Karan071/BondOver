@@ -1,6 +1,6 @@
 
 .section {
-  padding: 96px 10vw;
+  padding: 96px 240px;
   background-color: #F8F8F8;
 }
 
@@ -29,8 +29,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 50% 50%;
-  gap: 24px;
+  grid-template-columns: 49% 49%;
+  gap: 2%;
 }
 
 .mingrid{
@@ -161,6 +161,10 @@
 
 @media (max-width: 1700px)
 {
+  .section{
+    padding-left: 140px;
+    padding-right: 140px;
+  }
   .cont1{
   max-width: 250px;
   }
@@ -343,22 +347,6 @@
   
 }
 @media (max-width: 700px) {
-  .header, 
-  .header h2,
-  .header p,
-  .header span,
-  .card,
-  .card .content,
-  .content,
-  .label,
-  .title,
-  .text {
-    text-align: left;
-  }
-  .card{
-    border-radius: 18px;
-  }
-  
   .section{
     padding-left: 16px;
     padding-right: 16px;
@@ -370,6 +358,26 @@
     font-size: 14px;
     padding: 10px 14px;
   }
+  .header, 
+  .header h2,
+  .header p,
+  .header span,
+  .card,
+  .card .content,
+  .content,
+  .label,
+  .title,
+  .text {
+    align-items: self-start;
+    text-align: left;
+  }
+  .card{
+    border-radius: 18px;
+  }
+  .card picture,.card img{
+    align-self: center;
+  }
+  
 }
 @media (max-width:480px){
   .card img{

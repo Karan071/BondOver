@@ -137,14 +137,14 @@ button {
 
 
 
-
 .gridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* cards won't shrink below 300px */
-  gap: 24px; /* fixed space between cards */
-  padding: 60px 210px 96px;
+  display: flex;
+  flex-wrap: wrap; /* allow wrapping to next line */
+  gap: 24px;
+  padding: 60px 240px 96px;
   background-color: #FEFEFE;
-  justify-items: center; /* ensures cards start from left */
+  justify-content: center;
+  align-items: flex-start;
 }
 /* Card styling */
 /* Responsive breakpoints */
@@ -155,6 +155,7 @@ button {
     padding: 40px 90px 64px;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 16px;
+    justify-items: center; 
   }
 }
 /* Tablet: 2 columns (641px - 1024px) */

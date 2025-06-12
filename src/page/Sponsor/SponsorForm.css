@@ -15,9 +15,9 @@
 }
 
 .sponsor-title {
-  font-size: 32px;
+  font-size: 54px !important;
   font-weight: 700;
-  margin: 0 0 24px 0;
+  margin: 0 0 40px 0 !important;
 }
 
 .section {
@@ -25,7 +25,7 @@
 }
 
 .section-header {
-  font-size: 18px;
+  font-size: 24px !important;
   font-weight: 600;
   margin-bottom: 16px;
 }
@@ -95,8 +95,8 @@
   color: #898989;
 }
 
-.text-\[18px\] {
-  font-size: 18px;
+.text-\[20px\] {
+  font-size: 20px;
 }
 
 .h-\[100px\] {
@@ -220,10 +220,11 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 24px 0;
 }
 
 .sts-heading {
-  font-size: 1.125rem;
+  font-size: 24px;
   font-weight: 400;
   color: #000;
   text-align: left;
@@ -248,7 +249,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid #F8F8F8;
   border-radius: 4px;
   background: #fff;
   cursor: pointer;
@@ -256,7 +257,7 @@
 }
 
 .sts-btn:hover {
-  border-color: #9ca3af;
+  border-color: #000000;
 }
 
 .sts-btn--selected {
@@ -337,7 +338,9 @@
   width: 100%;
   text-align: left;
 }
-
+.less{
+  margin-bottom: 24px !important;
+}
 @media (max-width:764px) {
   .SubmitBtn{
   padding: 12px 32px;
@@ -346,4 +349,48 @@
 .mobileMargin{
   margin-top: 16px;
 }
+.sponsor-title {
+  font-size: 40px !important;
+  margin-bottom: 24px !important;
 }
+.section-header,.sts-heading{
+  font-size: 18px !important;
+}
+.text-\[20px\] {
+  font-size: 16px;
+}
+}
+.margin{
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+}
+
+@media (min-width:765px){
+  .sts-input{
+    font-size: 20px;
+  }
+  .sts-btn__label{
+    font-size: 15px;
+  }
+  .sts-btn__icon-img{
+    width: 24px;
+    height: 24px;
+  }
+  .mobile-input__country{
+    font-size: 20px !important;
+  }
+  .mobile-input__field{
+  font-size: 20px !important;
+}
+.message-block{
+  font-size: 20px !important;
+}
+}
+.mobile-input__wrapper{
+  margin: 0% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+
+

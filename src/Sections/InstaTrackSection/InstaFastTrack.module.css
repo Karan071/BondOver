@@ -1,8 +1,9 @@
 /* Responsive padding & spacing update with clamp */
 
 .section {
-  padding: clamp(40px, 8vw, 84px) clamp(16px, 8vw, 248px) clamp(40px, 8vw, 84px) clamp(16px, 9vw, 248px);
+  padding: clamp(40px, 8vw, 84px) clamp(16px, 8vw, 248px) clamp(40px, 8vw, 84px) clamp(16px, 9vw, 240px);
   padding-right: 0%;
+  padding-left: 240px;
   margin: 0 auto;
   background: #FEFEFE;
 }
@@ -94,6 +95,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+@media (max-width:1700px){
+  .section{
+    padding-left: clamp(16px, 9vw, 240px);
+  }
 }
 @media (max-width:900px){
   .section{

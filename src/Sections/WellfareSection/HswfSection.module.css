@@ -2,6 +2,7 @@
 
 .section {
   padding: clamp(40px, 7vw, 96px) clamp(16px, 10vw, 240px);
+  padding-left: 240px;
   text-align: center;
   background: #F8F8F8;
   margin: 0 auto;

@@ -273,7 +273,7 @@ function JoinForm({ form, handleChange, setGender, setJoinAs, loading, success, 
 
 function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP }) {
   return (
-    <section className="sponsor-container upperSponsor">
+    <section className="sponsor-container upperSponsor margin">
       <h1 className="sponsor-title text-left">Register For Event</h1>
       <div className="section">
         <p className="section-header text-left">

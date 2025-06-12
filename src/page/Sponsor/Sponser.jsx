@@ -56,7 +56,7 @@ function RegisterForEvent() {
   };
 
   return (
-    <section className="sponsor-container">
+    <section className="sponsor-container margin">
       <h1 className="sponsor-title text-left">Register For Event</h1>
 
       <div className="section">
