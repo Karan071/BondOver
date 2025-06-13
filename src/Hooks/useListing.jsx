@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const baseURL = "https://hswf.network/"
+
 function useListing() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -10,7 +12,7 @@ function useListing() {
         let isMounted = true;
         setLoading(true);
         axios
-            .get("http://154.26.130.161/hswf/api/event/listing")
+            .get(`https://hswf.network/api/event/listing`)
             .then((res) => {
                 if (isMounted) {
                     setData(res.data);

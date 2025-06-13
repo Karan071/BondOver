@@ -1,7 +1,7 @@
 import useListing from "./Hooks/useListing";
 import img from "./assets/TempPhoto.png";
 
-const IMAGE_BASE = "http://154.26.130.161/hswf/";
+const IMAGE_BASE = "https://hswf.network/";
 
 export default function useUPComingBOSData() {
   const { data, loading, error } = useListing();
@@ -9,16 +9,22 @@ export default function useUPComingBOSData() {
   const eventList = Array.isArray(data?.data) ? data.data : [];
 
   const mappedData = eventList.map((item, idx) => {
-    const bannerPath = item.event_banner
-      ? "/" + item.event_banner
-      : null;
+    // Fix image banner logic
+    let image = img;
+    if (item.event_banner) {
+      // If event_banner is a full URL, use as is
+      if (item.event_banner.startsWith("http")) {
+        image = item.event_banner;
+      } else {
+        // Remove any leading slashes from event_banner before joining
+        image = `${IMAGE_BASE}${item.event_banner.replace(/^\/+/, "")}`;
+      }
+    }
 
     return {
       id: item.id ?? idx,
-      image: bannerPath
-        ? `${IMAGE_BASE}${bannerPath}`
-        : img,
-      title: item.name || item.title,
+      image,
+      title: item.name || item.title || "",
       ageGroup: item.category_data?.title || "",
       location: item.venue_name || "",
       date: item.start_date
