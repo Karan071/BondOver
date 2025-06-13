@@ -4,6 +4,7 @@ import GradientButton from '../GradientButton';
 
 const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) => {
     const [code, setCode] = useState(Array(4).fill(''));
+    const [error, setError] = useState('');
 
     const handleChange = (e, idx) => {
         const val = e.target.value.replace(/[^0-9]/g, '');
@@ -20,6 +21,11 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
 
     const handleVerify = () => {
         const verification = code.join('');
+        if (verification.length < 4) {
+            setError('Please enter all digits of the code.');
+            return;
+        }
+        setError('');
         onVerify && onVerify(verification);
     };
 
@@ -45,6 +51,7 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
                     />
                 ))}
             </div>
+            {error && <div className="error-message otp-error">{error}</div>}
             <GradientButton className='btn-verify' onClick={handleVerify}>Verify</GradientButton>
             <div className="resend-section">
                 <span>Didn't receive code?</span>

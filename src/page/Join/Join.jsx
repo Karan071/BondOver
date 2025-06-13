@@ -35,7 +35,6 @@ const JOIN_AS_OPTIONS = [
 
 export default function Join() {
   const [mobileNumber, setMobileNumber] = useState("");
-  const [showVerify, setShowVerify] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
 
   const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
@@ -60,19 +59,19 @@ export default function Join() {
     setForm((f) => ({ ...f, joinAs: j }));
 
   const handleSendOtp = async () => {
-    const sent = await sendOtp(mobileNumber);
-    if (sent) setShowVerify(true);
+    await sendOtp(mobileNumber);
+    // otpSent will be updated by the hook
   };
 
   const handleVerify = async (otp) => {
     await verifyOtp(mobileNumber, otp);
+    // verified will be updated by the hook
   };
 
   const handleChangeNumber = () => {
     reset();
-    setShowVerify(false);
-    setShowThankYou(false);
     setMobileNumber("");
+    setShowThankYou(false);
   };
 
   const handleSubmit = async (e) => {
@@ -102,12 +101,12 @@ export default function Join() {
             mobileNumber={mobileNumber}
             handleMobileChange={e => setMobileNumber(e.target.value)}
             handleGenerateOTP={handleSendOtp}
+            loading={verifying}
+            error={error}
           />
-          {/* {(error && !otpSent) && <div className="error-message">{error}</div>} */}
         </>
       )}
 
-      {/* Show VerificationCode if OTP sent and not yet verified */}
       {otpSent && !verified && (
         <div className="verification-modal-overlay">
           <VerificationCode
@@ -115,11 +114,12 @@ export default function Join() {
             onVerify={handleVerify}
             onResend={() => sendOtp(mobileNumber)}
             onChangeNumber={handleChangeNumber}
+            loading={verifying}
+            error={error}
           />
         </div>
       )}
 
-      {/* Show JoinForm if verified */}
       {verified && !showThankYou && (
         <JoinForm
           form={form}
@@ -271,7 +271,7 @@ function JoinForm({ form, handleChange, setGender, setJoinAs, loading, success, 
   );
 }
 
-function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP }) {
+function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP, loading, error }) {
   return (
     <section className="sponsor-container upperSponsor margin">
       <h1 className="sponsor-title text-left">Register For Event</h1>
@@ -297,15 +297,16 @@ function OTP({ mobileNumber, handleMobileChange, handleGenerateOTP }) {
             />
           </div>
         </div>
+        {error && <div className="error-message">{error}</div>}
       </div>
       <div className="wrapBtn mobileMargin">
         <GradientButton
           type="button"
-          disabled={!/^\d{10}$/.test(mobileNumber)}
+          disabled={!/^\d{10}$/.test(mobileNumber) || loading}
           onClick={handleGenerateOTP}
           inpclass="gradientButton"
         >
-          Generate OTP
+          {loading ? "Sending OTP..." : "Generate OTP"}
         </GradientButton>
       </div>
     </section>
