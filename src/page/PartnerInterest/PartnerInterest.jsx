@@ -5,6 +5,8 @@ import RenderInput from "../../Layout/RenderInput";
 import Button from "../../Components/button";
 import styles from "./PartnerInterest.module.css";
 import GradientButton from "../../Components/GradientButton";
+import VerificationCode from "../../Components/NotificationCard/VerificationCode";
+import useOtp from "../../Hooks/useOtp";
 
 import schoolCollegeIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/School.png";
 import corporateBrandIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/Bag.png";
@@ -39,16 +41,23 @@ const OPTION = [
 export default function PartnerInterest() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, []);  const [isOtpVerified, setIsOtpVerified] = useState(false);
+
+  const handleOtpVerified = () => {
+    setIsOtpVerified(true);
+  };
+
   return (
     <div>
       <div className={styles.navWrapper}>
         <Navbar />
       </div>
       <PartnerBond />
-      {/* <RegisterForEvent /> */}
-      <FormBody />
-        
+      {!isOtpVerified ? (
+        <RegisterForEvent onVerified={handleOtpVerified} />
+      ) : (
+        <FormBody />
+      )}
       <Footer />
     </div>
   );
@@ -71,16 +80,40 @@ function PartnerBond() {
 
 function RegisterForEvent() {
   const [mobileNumber, setMobileNumber] = useState("");
+  const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
 
   const handleMobileChange = (e) => {
     const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10);
     setMobileNumber(onlyDigits);
   };
 
-  const handleGenerateOTP = () => {
-    console.log("Generate OTP for", mobileNumber);
-    // TODO: hook in your OTP logic here
+  const handleGenerateOTP = async () => {
+    await sendOtp(mobileNumber);
   };
+
+  const handleVerify = async (otp) => {
+    await verifyOtp(mobileNumber, otp);
+  };
+
+  const handleChangeNumber = () => {
+    reset();
+    setMobileNumber("");
+  };
+
+  if (otpSent && !verified) {
+    return (
+      <div className="verification-modal-overlay">
+        <VerificationCode
+          phoneNumber={`+91 ${mobileNumber}`}
+          onVerify={handleVerify}
+          onResend={() => sendOtp(mobileNumber)}
+          onChangeNumber={handleChangeNumber}
+          loading={verifying}
+          error={error}
+        />
+      </div>
+    );
+  }
 
   return (
     <section className="sponsor-container margin">
@@ -107,17 +140,18 @@ function RegisterForEvent() {
             />
           </div>
         </div>
+        {error && <div className="error-message">{error}</div>}
       </div>
 
-        <div className="wrapBtn mobileMargin">
-                <GradientButton
-                  type="button"
-                  disabled={!/^\d{10}$/.test(mobileNumber)}
-                  onClick={handleGenerateOTP}
-                >
-                  Generate OTP
-                </GradientButton>
-              </div>
+      <div className="wrapBtn mobileMargin">
+        <GradientButton
+          type="button"
+          disabled={!/^\d{10}$/.test(mobileNumber) || verifying}
+          onClick={handleGenerateOTP}
+        >
+          {verifying ? "Sending OTP..." : "Generate OTP"}
+        </GradientButton>
+      </div>
     </section>
   );
 }

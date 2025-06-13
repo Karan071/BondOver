@@ -13,26 +13,25 @@ import { DynamicCard } from "../../Components/DynamicCard/DynamicCard.jsx";
 
 export default function Register() {
   const [mobileNumber, setMobileNumber] = useState("");
-  const [showVerify, setShowVerify] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
 
   const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
 
   const handleSendOtp = async () => {
     await sendOtp(mobileNumber);
-    setShowVerify(true);
+
   };
 
   const handleVerify = async (otp) => {
     await verifyOtp(mobileNumber, otp);
-    if (!error && !verifying) setShowThankYou(true);
+ 
+    if (verified) setShowThankYou(true);
   };
 
   const handleChangeNumber = () => {
     reset();
-    setShowVerify(false);
-    setShowThankYou(false);
     setMobileNumber("");
+    setShowThankYou(false);
   };
 
   return (
@@ -61,10 +60,7 @@ export default function Register() {
 
 
       
-
-
-
-      {!otpSent && !showVerify && (
+      {!otpSent && (
         <div className="sponsor-container margin">
           <DynamicCard image={imge} age="14-25" title="Gully Cricket Championship Delhi Edition" location="Gandhi Maidan, Patna" date="June 2025 | 8 AM – 5 PM"/>
 
@@ -80,39 +76,46 @@ export default function Register() {
               <div className="mobile-input__group">
                 <span className="mobile-input__country">+91</span>
                 <input
+                  required
                   id="mobileNumber"
-                  name="mobileNumber"
-                  type="text"
-                  value={mobileNumber}
-                  onChange={e => setMobileNumber(e.target.value)}
-                  placeholder="Enter Mobile Number"
-                  className="mobile-input__field"
+                  type="tel"
                   maxLength={10}
+                  placeholder="Enter Mobile Number"
+                  value={mobileNumber}
+                  onChange={e => {
+                    const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setMobileNumber(onlyDigits);
+                  }}
+                  className="mobile-input__field"
                 />
               </div>
             </div>
+            {error && <div className="error-message">{error}</div>}
           </div>
           <div className="wrapBtn mobileMargin">
             <GradientButton
               type="button"
-              className="gbtn SubmitBtn"
-              disabled={!/^\d{10}$/.test(mobileNumber)}
+              disabled={!/^\d{10}$/.test(mobileNumber) || verifying}
               onClick={handleSendOtp}
+              inpclass="gradientButton"
             >
-              Generate OTP
+              {verifying ? "Sending OTP..." : "Generate OTP"}
             </GradientButton>
           </div>
-          {error && <p className="error-message">{error}</p>}
         </div>
       )}
 
-      {otpSent && showVerify && !verified && (
-        <VerificationCode
-          phoneNumber={`+91 ${mobileNumber}`}
-          onVerify={handleVerify}
-          onResend={() => sendOtp(mobileNumber)}
-          onChangeNumber={handleChangeNumber}
-        />
+      {otpSent && !verified && (
+        <div className="verification-modal-overlay">
+          <VerificationCode
+            phoneNumber={`+91 ${mobileNumber}`}
+            onVerify={handleVerify}
+            onResend={() => sendOtp(mobileNumber)}
+            onChangeNumber={handleChangeNumber}
+            loading={verifying}
+            error={error}
+          />
+        </div>
       )}
 
       {verified && showThankYou && (
