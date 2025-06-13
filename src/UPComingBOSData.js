@@ -1,7 +1,6 @@
 import useListing from "./Hooks/useListing";
 import img from "./assets/TempPhoto.png";
 
-const API_BASE = "http://154.26.130.161/hswf/api/event/listing";
 const IMAGE_BASE = "http://154.26.130.161/hswf/";
 
 export default function useUPComingBOSData() {

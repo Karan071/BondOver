@@ -3,6 +3,9 @@ import axios from "axios";
 
 import RenderInput from "../../Layout/RenderInput";
 import GradientButton from "../../Components/GradientButton";
+import VerificationCode from "../../Components/NotificationCard/VerificationCode";
+import ThankYou from "../../Components/NotificationCard/ThankYou";
+import useOtp from "../../Hooks/useOtp";
 import "./SponsorForm.css";
 import titleIcon from "../../assets/Sponsor/Formicon/img1.png";
 import zoneIcon from "../../assets/Sponsor/Formicon/img2.png";
@@ -12,7 +15,6 @@ import csrIcon from "../../assets/Sponsor/Formicon/img5.png";
 import otherIcon from "../../assets/Sponsor/Formicon/img6.png";
 
 export default function SponsorForm() {
-
   const [organizationName, setOrganizationName] = useState("");
   const [contactPersonName, setContactPersonName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +25,8 @@ export default function SponsorForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const [showThankYou, setShowThankYou] = useState(false);
+  const { otpSent, verified, verifying, error: otpError, sendOtp, verifyOtp, reset } = useOtp();
 
 
   const TYPE_OPTIONS = [
@@ -32,12 +36,22 @@ export default function SponsorForm() {
     { id: "digital", label: "Digital Sponsor", iconSrc: digitalIcon },
     { id: "csr", label: "CSR Initiative", iconSrc: csrIcon },
     { id: "others", label: "Others", iconSrc: otherIcon },
-  ];
-  const handleMobileNumberChange = (e) => {
-
+  ];  const handleMobileNumberChange = (e) => {
     const value = e.target.value.replace(/\D/g, '').slice(0, 10);
     setMobileNumber(value);
+  };
 
+  const handleGenerateOTP = async () => {
+    await sendOtp(mobileNumber);
+  };
+
+  const handleVerify = async (otp) => {
+    await verifyOtp(mobileNumber, otp);
+  };
+
+  const handleChangeNumber = () => {
+    reset();
+    setMobileNumber("");
   };
 
   const toggleType = (id) =>
@@ -76,8 +90,8 @@ export default function SponsorForm() {
             "Content-Type": "application/json"
           }
         }
-      );
-      setSuccess(true);
+      );      setSuccess(true);
+      setShowThankYou(true);
 
       setOrganizationName("");
       setContactPersonName("");
@@ -93,11 +107,68 @@ export default function SponsorForm() {
     }
   };
 
+  if (showThankYou) {
+    return <ThankYou onClose={() => setShowThankYou(false)} />;
+  }
+
+  if (!verified) {
+    return (
+      <section className="sponsor-container margin">
+        {otpSent ? (
+          <div className="verification-modal-overlay">
+            <VerificationCode
+              phoneNumber={`+91 ${mobileNumber}`}
+              onVerify={handleVerify}
+              onResend={() => sendOtp(mobileNumber)}
+              onChangeNumber={handleChangeNumber}
+              loading={verifying}
+              error={otpError}
+            />
+          </div>
+        ) : (
+          <>
+            <h1 className="sponsor-title text-left">Sponsor Inquiry</h1>
+            <div className="section">
+              <p className="section-header text-left">
+                Please enter a 10-digit valid mobile number to receive OTP
+              </p>
+              <div className="mobile-input__wrapper">
+                <label htmlFor="mobileNumber" className="mobile-input__label">
+                  Mobile Number <span>*</span>
+                </label>
+                <div className="mobile-input__group">
+                  <span className="mobile-input__country">+91</span>
+                  <input
+                    id="mobileNumber"
+                    type="tel"
+                    maxLength={10}
+                    placeholder="Enter Mobile Number"
+                    value={mobileNumber}
+                    onChange={handleMobileNumberChange}
+                    className="mobile-input__field"
+                  />
+                </div>
+              </div>
+              {otpError && <div className="error-message">{otpError}</div>}
+            </div>
+            <div className="wrapBtn mobileMargin">
+              <GradientButton
+                type="button"
+                disabled={!/^\d{10}$/.test(mobileNumber) || verifying}
+                onClick={handleGenerateOTP}
+              >
+                {verifying ? "Sending OTP..." : "Generate OTP"}
+              </GradientButton>
+            </div>
+          </>
+        )}
+      </section>
+    );
+  }
 
   return (
     <form className="sponsor-container margin" onSubmit={handleSubmit}>
       <h1 className="sponsor-title text-left">Sponsor Inquiry</h1>
-
 
       <div className="section">
         <p className="section-header text-left">Organisation Information</p>
@@ -125,12 +196,10 @@ export default function SponsorForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-
         <div className="mobile-input__wrapper">
           <label htmlFor="mobileNumber" className="mobile-input__label">
             Mobile Number <span>*</span>
           </label>
-
           <div className="mobile-input__group">
             <span className="mobile-input__country">+91</span>
             <input
@@ -138,8 +207,7 @@ export default function SponsorForm() {
               name="mobileNumber"
               type="text"
               value={mobileNumber}
-              onChange={handleMobileNumberChange}
-              placeholder="Enter Mobile Number"
+              readOnly
               className="mobile-input__field"
             />
           </div>

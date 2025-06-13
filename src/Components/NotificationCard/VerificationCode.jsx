@@ -5,6 +5,7 @@ import icone from '../../assets/Icon/verify.png';
 
 const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) => {
     const [code, setCode] = useState(Array(4).fill(''));
+    const [error, setError] = useState('');
 
     const handleChange = (e, idx) => {
         const val = e.target.value.replace(/[^0-9]/g, '');
@@ -21,6 +22,11 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
 
     const handleVerify = () => {
         const verification = code.join('');
+        if (verification.length < 4) {
+            setError('Please enter all digits of the code.');
+            return;
+        }
+        setError('');
         onVerify && onVerify(verification);
     };
 
@@ -47,7 +53,12 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
                     />
                 ))}
             </div>
+<<<<<<< HEAD
             <div className="butwrap"><GradientButton className='btn-verify' onClick={handleVerify} text="Verify"/></div>
+=======
+            {error && <div className="error-message otp-error">{error}</div>}
+            <GradientButton className='btn-verify' onClick={handleVerify}>Verify</GradientButton>
+>>>>>>> 7ef57c2d4303a12ef0976b604b52d76bb727df71
             <div className="resend-section">
                 <span>Didn't receive code?</span>
             </div>

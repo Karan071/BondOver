@@ -6,6 +6,9 @@ import Navbar from "../../Layout/Navbar";
 import Sponsorships from "./Sponsership.jsx";
 import LogoCard from "./LogoCard/LogoCard.jsx";
 import Footer from "../../Layout/footer/Footer.jsx";
+import VerificationCode from "../../Components/NotificationCard/VerificationCode";
+import ThankYou from "../../Components/NotificationCard/ThankYou";
+import useOtp from "../../Hooks/useOtp";
 import eduIcon from "../../assets/Sponsor/SponsorFlag.png";
 import cultureIcon from "../../assets/Sponsor/SponsorAuthentic.png";
 import govIcon from "../../assets/Sponsor/SponsorCsr.png";
@@ -44,16 +47,50 @@ const partners = [
 ];
 function RegisterForEvent() {
   const [mobileNumber, setMobileNumber] = useState("");
+  const [showThankYou, setShowThankYou] = useState(false);
+  const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
 
   const handleMobileChange = (e) => {
     const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10);
     setMobileNumber(onlyDigits);
   };
 
-  const handleGenerateOTP = () => {
-    console.log("Generate OTP for", mobileNumber);
-
+  const handleGenerateOTP = async () => {
+    await sendOtp(mobileNumber);
   };
+
+  const handleVerify = async (otp) => {
+    await verifyOtp(mobileNumber, otp);
+  };
+
+  const handleChangeNumber = () => {
+    reset();
+    setMobileNumber("");
+    setShowThankYou(false);
+  };
+
+  if (verified && !showThankYou) {
+    return <SponsorForm />;
+  }
+
+  if (showThankYou) {
+    return <ThankYou onClose={handleChangeNumber} />;
+  }
+
+  if (otpSent && !verified) {
+    return (
+      <div className="verification-modal-overlay">
+        <VerificationCode
+          phoneNumber={`+91 ${mobileNumber}`}
+          onVerify={handleVerify}
+          onResend={() => sendOtp(mobileNumber)}
+          onChangeNumber={handleChangeNumber}
+          loading={verifying}
+          error={error}
+        />
+      </div>
+    );
+  }
 
   return (
     <section className="sponsor-container margin">
@@ -80,15 +117,16 @@ function RegisterForEvent() {
             />
           </div>
         </div>
+        {error && <div className="error-message">{error}</div>}
       </div>
 
       <div className="wrapBtn mobileMargin">
         <GradientButton
           type="button"
-          disabled={!/^\d{10}$/.test(mobileNumber)}
+          disabled={!/^\d{10}$/.test(mobileNumber) || verifying}
           onClick={handleGenerateOTP}
         >
-          Generate OTP
+          {verifying ? "Sending OTP..." : "Generate OTP"}
         </GradientButton>
       </div>
     </section>
@@ -120,7 +158,7 @@ const Sponser = () => {
           </p>
         </div>
       </section>
-      {/* <RegisterForEvent /> */}
+    
       <section className={styles.section}>
         <h2 className={styles.h2}>Why Sponsor BOS?</h2>
 

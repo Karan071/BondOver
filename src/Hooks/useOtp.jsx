@@ -1,9 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { AUTH_KEY_SECRET, TEMPLATE_ID_SECRET } from "../config";
-
-const AUTH_KEY = AUTH_KEY_SECRET;
-const TEMPLATE_ID = TEMPLATE_ID_SECRET;
 
 export default function useOtp() {
     const [otpSent, setOtpSent] = useState(false);
@@ -14,19 +10,26 @@ export default function useOtp() {
     const sendOtp = async (mobile) => {
         setError("");
         try {
-            const url = `https://api.msg91.com/api/v5/otp?template_id=${TEMPLATE_ID}&mobile=91${mobile}&authkey=${AUTH_KEY}`;
-            const res = await axios.get(url);
+            const url = "http://154.26.130.161/hswf/api/send/otp";
+            const res = await axios.post(
+                url,
+                { phone: mobile },
+                {
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
             const data = res.data;
 
-            if (data.type !== "success") {
-                console.error("OTP API error:", data);
+            if (!data.success) {
                 setError(data?.message || "Failed to send OTP. Please try again.");
                 return false;
             }
             setOtpSent(true);
             return true;
         } catch (e) {
-            console.error("OTP send error:", e);
             setError("Failed to send OTP. Please try again.");
             return false;
         }
@@ -35,16 +38,38 @@ export default function useOtp() {
     const verifyOtp = async (mobile, otp) => {
         setVerifying(true);
         setError("");
+        // Validate OTP format before API call
+        if (!/^\d{4}$/.test(otp)) {
+            setError("Please enter a valid 4-digit OTP.");
+            setVerifying(false);
+            return false;
+        }
         try {
-            const url = `https://api.msg91.com/api/v5/otp/verify?otp=${otp}&authkey=${AUTH_KEY}&mobile=91${mobile}`;
-            const res = await axios.get(url);
+            const url = "http://154.26.130.161/hswf/api/verify/otp";
+            const [otp1, otp2, otp3, otp4] = otp.split("");
+            const res = await axios.post(
+                url,
+                {
+                    phone: mobile,
+                    otp1,
+                    otp2,
+                    otp3,
+                    otp4,
+                },
+                {
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
             const data = res.data;
 
-            if (data.type === "success") {
+            if (data.success) {
                 setVerified(true);
                 return true;
             } else {
-                setError("Invalid OTP. Please try again.");
+                setError(data?.message || "Invalid OTP. Please try again.");
                 return false;
             }
         } catch (e) {
