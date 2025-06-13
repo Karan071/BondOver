@@ -20,6 +20,7 @@ import supportResourcesIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/
 import csrIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/Csr.png";
 
 import axios from "axios";
+import { baseURL } from "../../config";
 
 
 const TYPE_OPTIONS = [
@@ -41,7 +42,8 @@ const OPTION = [
 export default function PartnerInterest() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);  const [isOtpVerified, setIsOtpVerified] = useState(false);
+  }, []);  
+  const [isOtpVerified, setIsOtpVerified] = useState(false);
 
   const handleOtpVerified = () => {
     setIsOtpVerified(true);
@@ -221,7 +223,7 @@ function FormBody() {
       form.append("query", description);
 
       await axios.post(
-        "http://154.26.130.161/hswf/api/partner/interests",
+        `${baseURL}/api/partner/interests`,
         form,
         {
           headers: {

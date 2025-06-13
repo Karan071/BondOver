@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../Layout/Navbar";
 import Footer from "../../Layout/footer/Footer";
 import WhatYouGet from "../../Components/WhatYouGet";
@@ -89,6 +89,10 @@ export default function Join() {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <>
       <div className="navWrapper">
@@ -155,6 +159,7 @@ const genderImagesSelected = {
 };
 
 function JoinForm({ form, handleChange, setGender, setJoinAs, loading, success, error, handleSubmit }) {
+  
   return (
     <section className="sponsor-container sponsor-container-latter">
       <h1 className="sponsor-title text-left">Fill in your details</h1>

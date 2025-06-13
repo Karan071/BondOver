@@ -11,7 +11,6 @@ export default function useUpcomingEventData2() {
   const mappedData = eventList.map((item, idx) => {
     let image = img;
     if (item.event_banner) {
-      // Use full URL if present, else join with API_BASE
       if (item.event_banner.startsWith("http")) {
         image = item.event_banner;
       } else {

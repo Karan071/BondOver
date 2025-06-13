@@ -12,11 +12,9 @@ export default function useUPComingBOSData() {
     // Fix image banner logic
     let image = img;
     if (item.event_banner) {
-      // If event_banner is a full URL, use as is
       if (item.event_banner.startsWith("http")) {
         image = item.event_banner;
       } else {
-        // Remove any leading slashes from event_banner before joining
         image = `${IMAGE_BASE}${item.event_banner.replace(/^\/+/, "")}`;
       }
     }
