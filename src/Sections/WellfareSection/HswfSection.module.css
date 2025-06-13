@@ -69,6 +69,7 @@
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  min-width: 340px;
 }
 
 .logo {
@@ -77,9 +78,9 @@
 }
 
 .legal {
-  font-size: clamp(14px, 2.5vw, 18px);
+  font-size: 16px;
   color: #4b5563;
-  text-align: center;
+  text-align: left;
 }
 
 .legal h4 {
@@ -97,6 +98,15 @@
   width: 100%;
   box-sizing: border-box;
 }
+@media (max-width: 1570px){
+  .legal{
+    font-size: 14px;
+  }
+  .but{
+    padding: 14px 24px;
+    font-size: 18px;
+  }
+}
 @media (max-width: 1360px) {
   .section {
     padding: clamp(40px, 6vw, 80px) clamp(16px, 8vw, 160px);
@@ -107,8 +117,6 @@
   }
 
   .footer > div {
-    flex: 1 1 260px;
-    max-width: 340px;
     padding: 20px;
   }
 
@@ -116,14 +124,6 @@
     height: clamp(44px, 5vw, 80px);
   }
 
-  .but {
-    font-size: clamp(14px, 2.5vw, 20px);
-    padding: clamp(10px, 2.5vw, 14px) clamp(18px, 5vw, 28px);
-  }
-
-  .legal {
-    font-size: clamp(12px, 2vw, 16px);
-  }
 
   .legal h4 {
     font-size: clamp(12px, 2.5vw, 18px);

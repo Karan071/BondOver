@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './VerificationCode.css';
-import GradientButton from '../GradientButton';
+import GradientButton from '../button.jsx';
+import icone from '../../assets/Icon/verify.png';
 
 const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) => {
     const [code, setCode] = useState(Array(4).fill(''));
@@ -26,8 +27,8 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
     return (
         <div className="verification-modal">
             <div className="verification-header">
-                <h2>Verification Code <span className="icon">✉️</span></h2>
-                <button className="close-btn" onClick={onChangeNumber}>×</button>
+                <h2>Verification Code <img className="icon" src={icone} alt='Message icon'></img></h2>
+                <button className="close-btn" onClick={onChangeNumber}></button>
             </div>
             <p className="instruction">
                 Please enter the Verification code sent to <strong>{phoneNumber}</strong> <button className="change-btn" onClick={onChangeNumber}>Change</button>
@@ -40,12 +41,13 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
                         type="text"
                         inputMode="numeric"
                         maxLength="1"
+                        placeholder='0'
                         value={digit}
                         onChange={e => handleChange(e, idx)}
                     />
                 ))}
             </div>
-            <GradientButton className='btn-verify' onClick={handleVerify}>Verify</GradientButton>
+            <div className="butwrap"><GradientButton className='btn-verify' onClick={handleVerify} text="Verify"/></div>
             <div className="resend-section">
                 <span>Didn't receive code?</span>
             </div>

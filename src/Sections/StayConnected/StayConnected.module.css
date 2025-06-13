@@ -149,3 +149,8 @@
     padding: 12px 16px;
   }
 }
+@media (max-width:320px) {
+  .inputs input{
+    width: 100%;
+  }
+}
