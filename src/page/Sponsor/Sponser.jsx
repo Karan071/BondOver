@@ -45,6 +45,7 @@ const partners = [
       "Your brand will feature in reels, stories, posters, kits, and campaigns with long shelf life and high shareability.",
   },
 ];
+
 function RegisterForEvent() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [showThankYou, setShowThankYou] = useState(false);
@@ -177,10 +178,7 @@ const Sponser = () => {
         </div>
       </section>
       <Sponsorships />
-
-
       <SponsorForm />
-
       <LogoCard />
       <LetsTalk />
       <Footer />

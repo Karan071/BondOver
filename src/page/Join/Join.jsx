@@ -200,8 +200,6 @@ function JoinForm({ form, handleChange, setGender, setJoinAs, loading, success, 
             </div>
           </div>
         </div>
-
-
         <div className="divideSection">
           <RenderInput
             label="DOB "

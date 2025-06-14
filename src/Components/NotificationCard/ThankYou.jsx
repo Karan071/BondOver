@@ -2,7 +2,6 @@ import './ThankYou.css';
 import GradientButton from '../GradientButton';
 
 function handleVerify() {
-    // Logic for handling verification can be added here
     console.log("Verification handled");
 }
 
