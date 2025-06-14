@@ -104,7 +104,6 @@ export default function Register() {
       {verified && showThankYou && (
         <ThankYou onClose={handleChangeNumber} />
       )}
-
       <Footer />
     </div>
   );

@@ -20,6 +20,7 @@ import supportResourcesIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/
 import csrIcon from "../../assets/Sponsor/Formicon/PartnerFormIcon/Csr.png";
 
 import axios from "axios";
+import { baseURL } from "../../config";
 
 
 const TYPE_OPTIONS = [
@@ -222,7 +223,7 @@ function FormBody({ verifiedMobileNumber }) {
       form.append("query", description);
 
       await axios.post(
-        "http://154.26.130.161/hswf/api/partner/interests",
+        `${baseURL}/api/partner/interests`,
         form,
         {
           headers: {
