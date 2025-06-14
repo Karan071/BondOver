@@ -41,23 +41,16 @@ const OPTION = [
 export default function PartnerInterest() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);  const [isOtpVerified, setIsOtpVerified] = useState(false);
-
-  const handleOtpVerified = () => {
-    setIsOtpVerified(true);
-  };
-
+  }, []);
   return (
     <div>
       <div className={styles.navWrapper}>
         <Navbar />
       </div>
       <PartnerBond />
-      {!isOtpVerified ? (
-        <RegisterForEvent onVerified={handleOtpVerified} />
-      ) : (
-        <FormBody />
-      )}
+      <RegisterForEvent />
+      <FormBody />
+        
       <Footer />
     </div>
   );
