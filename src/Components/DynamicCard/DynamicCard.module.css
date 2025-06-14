@@ -30,8 +30,9 @@
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
-  -webkit-line-clamp: 1; /* Number of lines to show */
-  -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 .icon{
     height: 16px;
