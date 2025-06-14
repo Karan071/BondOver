@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import {baseURL} from "../../config";
 import RenderInput from "../../Layout/RenderInput";
 import GradientButton from "../../Components/GradientButton";
 import VerificationCode from "../../Components/NotificationCard/VerificationCode";
@@ -75,7 +75,7 @@ export default function SponsorForm() {
 
     try {
       await axios.post(
-        "http://154.26.130.161/hswf/api/sponsor/enquiry",
+        `${baseURL}/api/sponsor/enquiry`,
         {
           organisation_name: organizationName,
           name: contactPersonName,
@@ -90,7 +90,8 @@ export default function SponsorForm() {
             "Content-Type": "application/json"
           }
         }
-      );      setSuccess(true);
+      );      
+      setSuccess(true);
       setShowThankYou(true);
 
       setOrganizationName("");
