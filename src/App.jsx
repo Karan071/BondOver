@@ -8,14 +8,14 @@ import Join from "./page/Join/Join.jsx";
 function App() {
   return (
     <>
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/partner" element={<PartnerInterest/>}/>
-      <Route path="/sponser" element={<Sponser/>} />
-      <Route path="/register" element={<Register/>} />
-      <Route path="/join" element={<Join/>} />
-      
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/partner" element={<PartnerInterest />} />
+        <Route path="/sponser" element={<Sponser />} />
+        <Route path="/register/:uuid" element={<Register />} />
+        <Route path="/join" element={<Join />} />
+
+      </Routes>
     </>
   );
 }

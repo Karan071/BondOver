@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { baseURL } from "../config";
 
 export default function useOtp() {
     const [otpSent, setOtpSent] = useState(false);
@@ -10,7 +11,7 @@ export default function useOtp() {
     const sendOtp = async (mobile) => {
         setError("");
         try {
-            const url = "http://154.26.130.161/hswf/api/send/otp";
+            const url = `${baseURL}/api/send/otp`;
             const res = await axios.post(
                 url,
                 { phone: mobile },

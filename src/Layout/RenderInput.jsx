@@ -1,5 +1,3 @@
-// src/components/RenderInput.jsx
-
 import "../page/Sponsor/SponsorForm.css"; 
 
 export default function RenderInput({

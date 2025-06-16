@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSection from "../Sections/HeroSection/Hero.jsx";
 import Heritage from "../Sections/Heritage/Heritage.jsx";
 import BOShead from "../Components/BOShead.jsx";
@@ -15,8 +14,6 @@ import CommunityTalksSection from "../Sections/ComunityTalk/ComunityTalk.jsx";
 import StayConnectedSection from "../Sections/StayConnected/StayConnected.jsx";
 import WellfareSection from "../Sections/WellfareSection/Wellfare.jsx";
 import Footer from "../Layout/footer/Footer.jsx";
-import VerificationCode from "../Components/NotificationCard/VerificationCode.jsx";
-import ThankYou from "../Components/NotificationCard/ThankYou.jsx";
 
 const Landing = () => {
     const { data: BOSdata, loading, error } = useUPComingBOSData();
@@ -55,7 +52,6 @@ const Landing = () => {
                 <StayConnectedSection />
                 <WellfareSection />
                 <Footer />
-                {/* <VerificationCode/> */}
             </>
         </div>
     );

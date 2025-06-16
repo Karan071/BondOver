@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import Navbar from "../../Layout/Navbar";
 import "./Register.css";
 import WhatYouGet from "../../Components/WhatYouGet";
@@ -8,15 +9,40 @@ import VerificationCode from "../../Components/NotificationCard/VerificationCode
 import ThankYou from "../../Components/NotificationCard/ThankYou.jsx";
 import useOtp from "../../Hooks/useOtp";
 import { baseURL } from "../../config.js";
-
+import axios from "axios";
+import RenderInput from "../../Layout/RenderInput";
 import imge from '../../assets/TempPhoto.png'
 import { DynamicCard } from "../../Components/DynamicCard/DynamicCard.jsx";
 
 export default function Register() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [showThankYou, setShowThankYou] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    gender: "",
+    locality: "",
+    dob: "",
+    joinAs: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  const { uuid } = useParams();
+  const eventUUID = uuid;
 
   const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
+  const location = useLocation();
+
+  const eventDetails = location.state || {
+    image: imge,
+    age: "14-25",
+    title: "Gully Cricket Championship Delhi Edition",
+    location: "Gandhi Maidan, Patna",
+    date: "June 2025 | 8 AM – 5 PM"
+  };
 
   const handleSendOtp = async () => {
     await sendOtp(mobileNumber);
@@ -35,6 +61,53 @@ export default function Register() {
     setShowThankYou(false);
   };
 
+  // Update phone in form after OTP verification
+  useEffect(() => {
+    if (verified) setForm(f => ({ ...f, phone: mobileNumber }));
+  }, [verified, mobileNumber]);
+
+  const handleChange = (field) => (e) => {
+    setForm({ ...form, [field]: e.target.value });
+  };
+
+  const setGender = (gender) => () => setForm({ ...form, gender });
+  const setJoinAs = (joinAs) => () => setForm({ ...form, joinAs });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setFormError("");
+    setFormSuccess(false);
+
+    try {
+      await axios.post(
+        `${baseURL}api/event/register/${eventUUID}`,
+        // `http://154.26.130.161/hswf/api/event/register/{eventUUID}`,
+        {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          gender: form.gender,
+          locality: form.locality,
+          dob: form.dob,
+          join_as: form.joinAs,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setFormSuccess(true);
+      setShowThankYou(true); // <-- Move this here!
+    } catch (err) {
+      setFormError("Registration failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <div className="container">
@@ -45,7 +118,13 @@ export default function Register() {
       <StaticInfo />
       {!otpSent && (
         <div className="sponsor-container margin">
-          <DynamicCard image={imge} age="14-25" title="Gully Cricket Championship Delhi Edition" location="Gandhi Maidan, Patna" date="June 2025 | 8 AM – 5 PM" />
+          <DynamicCard
+            image={eventDetails.image}
+            age={eventDetails.age}
+            title={eventDetails.title}
+            location={eventDetails.location}
+            date={eventDetails.date}
+          />
 
           <h1 className="sponsor-title text-left">Register For Event</h1>
           <div className="section">
@@ -101,6 +180,19 @@ export default function Register() {
         </div>
       )}
 
+      {verified && !showThankYou && (
+        <JoinForm
+          form={form}
+          handleChange={handleChange}
+          setGender={setGender}
+          setJoinAs={setJoinAs}
+          loading={loading}
+          success={formSuccess}
+          error={formError}
+          handleSubmit={handleSubmit}
+        />
+      )}
+
       {verified && showThankYou && (
         <ThankYou onClose={handleChangeNumber} />
       )}
@@ -133,7 +225,7 @@ function JoinForm({ form, handleChange, setGender, setJoinAs, loading, success, 
                 </span>
               </div>
 
-              <div className="genderOptions">
+              <div className="genderOptions">``
                 {["male", "female", "other"].map((g) => (
                   <button
                     key={g}

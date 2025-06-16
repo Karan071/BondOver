@@ -2,6 +2,7 @@ import useListing from "./Hooks/useListing";
 import img from "./assets/TempPhoto.png";
 
 const IMAGE_BASE = "https://hswf.network/";
+// const IMAGE_BASE = "http://154.26.130.161/hswf/";
 
 export default function useUPComingBOSData() {
   const { data, loading, error } = useListing();
@@ -34,7 +35,6 @@ export default function useUPComingBOSData() {
   return { data: mappedData, loading, error };
 }
 
-// Helper to format date range
 function formatEventDate(start, end) {
   const opts = { year: "numeric", month: "short", day: "numeric" };
   const startDate = new Date(start);

@@ -1,4 +1,3 @@
-
 export const baseURL = "https://hswf.network"
 
 export const AUTH_KEY_SECRET = "414267AspeU9svuZYb65aa6769P1";

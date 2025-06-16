@@ -4,7 +4,7 @@ import calendarIcon from '../../assets/Icon/calenderIcon.png';
 import Button from '../../Components/button.jsx';
 import { useNavigate } from 'react-router-dom';
 
-function EventHorizontalCard({ image, label, title, location, date, description }){
+function EventHorizontalCard({ image, label, title, location, date, description, uuid, ageGroup }) {
   const navigate = useNavigate();
   return (
     <div className={`${styles.card} cardBackground`} id='BOS'>
@@ -16,14 +16,26 @@ function EventHorizontalCard({ image, label, title, location, date, description 
           <FaMapMarkerAlt className={styles.icon} /> {location}
         </p>
         <p className={styles.info}>
-              <img src={calendarIcon} alt="calendar" className={styles.dateIm}/>
-              {date}
+          <img src={calendarIcon} alt="calendar" className={styles.dateIm} />
+          {date}
         </p>
         <p className={styles.highlight}>
           <strong>Come together. Play together. Grow stronger.</strong>
         </p>
         <p className={styles.description}>{description}</p>
-        <Button text="Register Now" className={styles.but} onClick={() => navigate("/register")}/>
+        <Button
+          text="Register Now"
+          className={styles.but}
+          onClick={() => navigate(`/register/${uuid}`, {
+            state: {
+              image,
+              age: ageGroup, 
+              title,
+              location,
+              date
+            }
+          })}
+        />
       </div>
     </div>
   );
