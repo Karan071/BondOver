@@ -9,7 +9,7 @@ const EventCard = ({ image, title, ageGroup, location, date }) => {
     <>
     <div className={styles.container}>
     <div className={`${styles.card} cardBackground`}>
-      <img src={image} alt="event" className={styles.image} />
+      <img src={image} alt={title} className={styles.image} />
       <div className={styles.body}>
         <p className={`${styles.age} ${styles.Age}`}>Age group: {ageGroup}</p>
         <h3 className={styles.title}>{title}</h3>

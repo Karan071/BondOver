@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './VerificationCode.css';
-import GradientButton from '../button.jsx';
+import Button from '../button';
 import icone from '../../assets/Icon/verify.png';
 
 const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) => {
@@ -54,8 +54,8 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
                 ))}
             </div>
             {error && <div className="error-message otp-error">{error}</div>}
-            <div className='butwrap'>
-                <GradientButton className='btn-verify' onClick={handleVerify} text="Verify"/>
+            <div className='verify-btn-container'>
+                <Button text="Verify" onClick={handleVerify} className="verify-btn" />
             </div>
             <div className="resend-section">
                 <span>Didn't receive code?</span>
