@@ -9,7 +9,6 @@ export default function useUPComingBOSData() {
   const eventList = Array.isArray(data?.data) ? data.data : [];
 
   const mappedData = eventList.map((item, idx) => {
-    // Fix image banner logic
     let image = img;
     if (item.event_banner) {
       if (item.event_banner.startsWith("http")) {

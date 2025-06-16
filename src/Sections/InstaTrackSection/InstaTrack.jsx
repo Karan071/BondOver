@@ -4,23 +4,34 @@ import logo from '../../assets/Icon/InstaIcon.png';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const placeholderVideos = Array(6).fill('https://via.placeholder.com/180x320.png?text=9:16+Video');
-
 const InstaFastTrack = () => {
-  const [playingVideo, setPlayingVideo] = useState(null);
+  const [playingId, setPlayingId] = useState(null);
   const videoRefs = useRef({});
 
-  const handlePlay = (videoId) => {
-    const videoElement = videoRefs.current[videoId];
-    if (playingVideo && playingVideo !== videoElement) {
-      playingVideo.pause();
-      playingVideo.muted = true;
+  const handleVideoClick = (videoId) => {
+    const video = videoRefs.current[videoId];
+    if (!video) return;
+
+    // Pause any other playing video
+    Object.entries(videoRefs.current).forEach(([id, vid]) => {
+      if (id !== String(videoId) && vid && !vid.paused) {
+        vid.pause();
+      }
+    });
+
+    if (video.paused) {
+      video.muted = false;
+      video.play();
+      setPlayingId(videoId);
+    } else {
+      video.pause();
+      setPlayingId(null);
     }
-    if (videoElement) {
-      videoElement.muted = false;
-      videoElement.play();
-      setPlayingVideo(videoElement);
-    }
+  };
+
+  // When a video ends, clear playingId
+  const handleEnded = (videoId) => {
+    setPlayingId(prev => (prev === videoId ? null : prev));
   };
 
   return (
@@ -39,7 +50,7 @@ const InstaFastTrack = () => {
             <button className={styles.followBtn}>
               <img src={logo} alt="Instagram" /> Follow Us
             </button>
-            </Link>
+          </Link>
         </div>
       </div>
 
@@ -47,7 +58,7 @@ const InstaFastTrack = () => {
         {videoData.map((video) => (
           <div
             key={video.id}
-            className={`${styles.videoCard} ${playingVideo === videoRefs.current[video.id] ? styles.playing : ''}`}
+            className={`${styles.videoCard} ${playingId === video.id ? styles.playing : ''}`}
           >
             <video
               ref={el => videoRefs.current[video.id] = el}
@@ -57,13 +68,20 @@ const InstaFastTrack = () => {
               className={styles.video}
               width="180"
               height="320"
-              onClick={() => handlePlay(video.id)}
+              onClick={() => handleVideoClick(video.id)}
+              onEnded={() => handleEnded(video.id)}
             />
-            <div onClick={() => handlePlay(video.id)}>
-              <svg viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
+            {(!videoRefs.current[video.id] || videoRefs.current[video.id].paused) && (
+              <div
+                className={styles.playOverlay}
+                onClick={() => handleVideoClick(video.id)}
+              >
+                <svg viewBox="0 0 24 24" width="48" height="48">
+                  <circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)" />
+                  <path d="M9 7v10l8-5z" fill="#fff" />
+                </svg>
+              </div>
+            )}
           </div>
         ))}
       </div>
