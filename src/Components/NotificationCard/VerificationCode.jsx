@@ -53,15 +53,14 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
                     />
                 ))}
             </div>
-<<<<<<< HEAD
-            <div className="butwrap"><GradientButton className='btn-verify' onClick={handleVerify} text="Verify"/></div>
-=======
             {error && <div className="error-message otp-error">{error}</div>}
-            <GradientButton className='btn-verify' onClick={handleVerify}>Verify</GradientButton>
->>>>>>> 7ef57c2d4303a12ef0976b604b52d76bb727df71
+            <div className='butwrap'>
+                <GradientButton className='btn-verify' onClick={handleVerify} text="Verify"/>
+            </div>
             <div className="resend-section">
                 <span>Didn't receive code?</span>
             </div>
+            
         </div>
     );
 };
