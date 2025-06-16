@@ -60,6 +60,7 @@ const VerificationCode = ({ phoneNumber, onVerify, onResend, onChangeNumber }) =
             <div className="resend-section">
                 <span>Didn't receive code?</span>
             </div>
+            
         </div>
     );
 };

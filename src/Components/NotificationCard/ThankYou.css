@@ -4,16 +4,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
+  z-index: 1000000;
+  background: rgba(0,0,0,0.4);
 }
-
 .thankyou-content {
-  width: 420px;
   padding: 30px;
+  max-width: 750px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
@@ -21,24 +20,15 @@
   text-align: center;
 }
 
-.thankyou-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
 
 .thankyou-title {
   margin: 0;
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: bold;
 }
 
 .thankyou-underline {
-  width: 180px;
+  width: 210px;
   height: 4px;
   margin: 12px auto 24px;
   background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
@@ -49,28 +39,64 @@
 
 .thankyou-subtitle {
   margin: 0;
-  font-size: 1rem;
+  font-size: 24px;
   font-weight: 500;
   color: #333;
 }
 
 .thankyou-message {
   margin: 16px 0 24px;
-  font-size: 0.95rem;
+  font-size: 20px;
   line-height: 1.5;
   color: #555;
 }
 
 .thankyou-ok {
-  padding: 10px 0;
-  width: 100%;
-  font-size: 1rem;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #ff003c, #00e6ff);
-  cursor: pointer;
+  font-size: 28px ;
+  padding: 16px 48px;
+  font-weight: bold !important;
 }
 
-/* .thankyou-ok:hover {
-  opacity: 0.9;
-} */
+@media (max-width:1024px) {
+  .thankyou-title{
+    font-size: 32px;
+  }
+  .thankyou-underline{
+    width: 170px;
+  }
+  .thankyou-subtitle{
+    font-size: 20px;
+  }
+  .thankyou-message{
+    font-size: 16px;
+  }
+  .thankyou-ok{
+    font-size: 20px;
+    padding: 12px 32px;
+  }
+  .thankyou-content{
+    width: 500px;
+  }
+}
+@media (max-width:600px){
+  .thankyou-title{
+    font-size: 28px;
+  }
+  .thankyou-underline{
+    width: 148px;
+  }
+  .thankyou-subtitle{
+    font-size: 18px;
+  }
+  .thankyou-message{
+    font-size: 14px;
+  }
+  .thankyou-ok{
+    font-size: 18px;
+    padding: 8px 32px;
+  }
+  .thankyou-content{
+    width: 350px;
+    padding: 25px 16px;
+  }
+}

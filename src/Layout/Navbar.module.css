@@ -112,7 +112,7 @@
     display: block;
     padding: 10px 0;
     color: black !important;
-    font-size: 14px;
+    font-size: 14px !important;
     border-radius: 8px;
     width: 100%;
     text-decoration: none;
@@ -125,8 +125,8 @@
   }
 
   .joinBtn {
-    font-size: 18px;
-    padding: 10px 24px;
+    font-size: 18px !important;
+    padding: 10px 24px !important;
     color: black;
     text-align: left;
     margin-top: 20px;
