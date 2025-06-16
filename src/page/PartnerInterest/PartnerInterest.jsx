@@ -42,14 +42,10 @@ const OPTION = [
 export default function PartnerInterest() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-  
-  const [isOtpVerified, setIsOtpVerified] = useState(false);
-  const [verifiedMobileNumber, setVerifiedMobileNumber] = useState("");
+  }, []);  const [isOtpVerified, setIsOtpVerified] = useState(false);
 
-  const handleOtpVerified = (mobileNumber) => {
+  const handleOtpVerified = () => {
     setIsOtpVerified(true);
-    setVerifiedMobileNumber(mobileNumber);
   };
 
   return (
@@ -61,7 +57,7 @@ export default function PartnerInterest() {
       {!isOtpVerified ? (
         <RegisterForEvent onVerified={handleOtpVerified} />
       ) : (
-        <FormBody verifiedMobileNumber={verifiedMobileNumber} />
+        <FormBody />
       )}
       <Footer />
     </div>
@@ -83,7 +79,7 @@ function PartnerBond() {
   );
 }
 
-function RegisterForEvent({ onVerified }) {
+function RegisterForEvent() {
   const [mobileNumber, setMobileNumber] = useState("");
   const { otpSent, verified, verifying, error, sendOtp, verifyOtp, reset } = useOtp();
 
@@ -97,10 +93,7 @@ function RegisterForEvent({ onVerified }) {
   };
 
   const handleVerify = async (otp) => {
-    const success = await verifyOtp(mobileNumber, otp);
-    if (success) {
-      onVerified(mobileNumber);
-    }
+    await verifyOtp(mobileNumber, otp);
   };
 
   const handleChangeNumber = () => {
@@ -164,11 +157,11 @@ function RegisterForEvent({ onVerified }) {
   );
 }
   
-function FormBody({ verifiedMobileNumber }) {
+function FormBody() {
   const [organizationName, setOrganizationName] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [mobileNumber] = useState(verifiedMobileNumber);
+  const [mobileNumber, setMobileNumber] = useState("");
 
   const [selectedOrgType, setSelectedOrgType] = useState("");
   const [selectedInterestTypes, setSelectedInterestTypes] = useState([]);
@@ -177,6 +170,12 @@ function FormBody({ verifiedMobileNumber }) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+
+  const handleMobileNumberChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setMobileNumber(value);
+  };
+
   const chooseOrgType = (typeId) => {
     setSelectedOrgType(typeId);
   };
@@ -287,12 +286,14 @@ function FormBody({ verifiedMobileNumber }) {
               Mobile Number <span>*</span>
             </label>
             <div className={styles.mobileInputGroup}>
-              <span className={styles.mobileInputCountry}>+91</span>              <input
+              <span className={styles.mobileInputCountry}>+91</span>
+              <input
                 id="mobileNumber"
                 name="mobileNumber"
                 type="text"
                 value={mobileNumber}
-                readOnly
+                onChange={handleMobileNumberChange}
+                placeholder="Enter Mobile Number"
                 className={styles.mobileInputField}
               />
             </div>
