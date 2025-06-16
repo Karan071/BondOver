@@ -3,6 +3,7 @@ import videoData from './videoData.js';
 import logo from '../../assets/Icon/InstaIcon.png';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import placehodlerImage from '../../assets/samplePlaceholder.jpg';
 
 const InstaFastTrack = () => {
   const [playingId, setPlayingId] = useState(null);
@@ -62,6 +63,7 @@ const InstaFastTrack = () => {
           >
             <video
               ref={el => videoRefs.current[video.id] = el}
+              poster={placehodlerImage}
               muted
               playsInline
               src={video.url}
