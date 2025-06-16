@@ -159,4 +159,7 @@
     width:fit-content;
     align-self: center;
   }
+  .footer div{
+    min-width: 100%;
+  }
 }

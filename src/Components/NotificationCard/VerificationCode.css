@@ -1,10 +1,9 @@
 .verification-modal {
-  width: 400px;
+  max-width: 400px;
   padding: 24px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  font-family: sans-serif;
 }
 
 .verification-header {
@@ -104,4 +103,24 @@
   margin-top: 4px;
 }
 
-
+@media (max-width:400px) {
+  .verification-header h2{
+    font-size: 24px;
+  }
+  .instruction{
+    font-size: 14px;
+  }
+  .code-inputs input{
+    font-size: 16px;
+    padding: 12px 0px;
+  }
+  .verify-btn{
+    font-size: 16px;
+  }
+  .resend-section{
+    font-size: 12px;
+  }
+  .verification-modal{
+    width: 100px;
+  }
+}
