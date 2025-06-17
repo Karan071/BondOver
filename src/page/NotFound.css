@@ -1,0 +1,105 @@
+.not-found-container {
+    position: relative;
+    min-height: 100vh;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Poppins', Arial, sans-serif;
+    overflow: hidden;
+}
+.navWrapper{
+  padding: 16px 193px;  
+  color: #000000;
+}
+
+.not-found-404-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22vw;
+    color: #f5f5f7;
+    font-weight: 700;
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.not-found-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.not-found-oops {
+    color: #ff2e55;
+    font-size: 8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.not-found-lost {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.not-found-desc {
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.not-found-help-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.not-found-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.not-found-link-btn {
+    background: #fff;
+    border: none;
+    outline: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.not-found-link-btn:hover {
+    background: #f5f5f7;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+.not-found-search {
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.not-found-adventure {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 2rem;
+}

@@ -4,6 +4,7 @@ import PartnerInterest from "./page/PartnerInterest/PartnerInterest.jsx";
 import Sponser from "./page/Sponsor/Sponser.jsx";
 import Register from "./page/Register/Register.jsx";
 import Join from "./page/Join/Join.jsx";
+import NotFound from "./page/NotFound.jsx";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/sponser" element={<Sponser />} />
         <Route path="/register/:uuid" element={<Register />} />
         <Route path="/join" element={<Join />} />
-
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </>
   );
