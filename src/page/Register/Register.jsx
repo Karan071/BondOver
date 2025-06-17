@@ -8,13 +8,22 @@ import Footer from "../../Layout/footer/Footer.jsx";
 import VerificationCode from "../../Components/NotificationCard/VerificationCode.jsx";
 import ThankYou from "../../Components/NotificationCard/ThankYou.jsx";
 import useOtp from "../../Hooks/useOtp";
-import { baseURL } from "../../config.js";
 import axios from "axios";
 import RenderInput from "../../Layout/RenderInput";
 import imge from '../../assets/TempPhoto.png'
 import { DynamicCard } from "../../Components/DynamicCard/DynamicCard.jsx";
 
+import men from '../../assets/Icon/men.png';
+import female from '../../assets/Icon/woman.png';
+import other from '../../assets/Icon/other.png';
+import menR from '../../assets/Icon/menR.png';
+import femaleR from '../../assets/Icon/womanR.png';
+import otherR from '../../assets/Icon/otherR.png';
+
 export default function Register() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [mobileNumber, setMobileNumber] = useState("");
   const [showThankYou, setShowThankYou] = useState(false);
   const [form, setForm] = useState({
@@ -61,7 +70,6 @@ export default function Register() {
     setShowThankYou(false);
   };
 
-  // Update phone in form after OTP verification
   useEffect(() => {
     if (verified) setForm(f => ({ ...f, phone: mobileNumber }));
   }, [verified, mobileNumber]);
@@ -81,8 +89,7 @@ export default function Register() {
 
     try {
       await axios.post(
-        `${baseURL}api/event/register/${eventUUID}`,
-        // `http://154.26.130.161/hswf/api/event/register/{eventUUID}`,
+        `https://hswf.network/api/event/register/${eventUUID}`,
         {
           name: form.name,
           email: form.email,
@@ -100,7 +107,7 @@ export default function Register() {
         }
       );
       setFormSuccess(true);
-      setShowThankYou(true); // <-- Move this here!
+      setShowThankYou(true);
     } catch (err) {
       setFormError("Registration failed. Please try again.");
     } finally {
@@ -110,11 +117,6 @@ export default function Register() {
 
   return (
     <div>
-      <div className="container">
-        <div className="navWrapper">
-          <Navbar />
-        </div>
-      </div>
       <StaticInfo />
       {!otpSent && (
         <div className="sponsor-container margin">
@@ -194,12 +196,26 @@ export default function Register() {
       )}
 
       {verified && showThankYou && (
-        <ThankYou onClose={handleChangeNumber} />
+        <ThankYou onClose={handleChangeNumber}
+          title="For Registering for the BOS Event!"
+          subtitle="We have received your details. You’ll get a confirmation and event kit information soon via email/SMS." />
       )}
       <Footer />
     </div>
   );
 }
+
+const genderImages = {
+  male: men,
+  female: female,
+  other: other,
+};
+
+const genderImagesSelected = {
+  male: menR,
+  female: femaleR,
+  other: otherR,
+};
 
 
 function JoinForm({ form, handleChange, setGender, setJoinAs, loading, success, error, handleSubmit }) {

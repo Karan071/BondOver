@@ -2,7 +2,6 @@ import useListing from "./Hooks/useListing";
 import img from "./assets/TempPhoto.png";
 
 const IMAGE_BASE = "https://hswf.network/";
-// const IMAGE_BASE = "http://154.26.130.161/hswf/";
 
 export default function useUPComingBOSData() {
   const { data, loading, error } = useListing();
@@ -21,6 +20,7 @@ export default function useUPComingBOSData() {
 
     return {
       id: item.id ?? idx,
+      uuid: item.uuid,
       image,
       title: item.name || item.title || "",
       ageGroup: item.category_data?.title || "",
@@ -38,6 +38,9 @@ export default function useUPComingBOSData() {
 function formatEventDate(start, end) {
   const opts = { year: "numeric", month: "short", day: "numeric" };
   const startDate = new Date(start);
-  const endDate   = new Date(end);
-  return `${startDate.toLocaleDateString("en-GB", opts)} – ${endDate.toLocaleDateString("en-GB", opts)}`;
+  const endDate = new Date(end);
+  return `${startDate.toLocaleDateString(
+    "en-GB",
+    opts
+  )} – ${endDate.toLocaleDateString("en-GB", opts)}`;
 }

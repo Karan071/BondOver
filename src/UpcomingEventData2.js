@@ -20,6 +20,7 @@ export default function useUpcomingEventData2() {
 
     return {
       id: item.id || idx,
+      uuid: item.uuid, 
       image,
       label: "Bond Over ",
       title: item.name || item.title,
